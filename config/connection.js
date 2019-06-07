@@ -3,6 +3,7 @@
 // *********************************************************************************
 // Dependencies
 
+const ENV = process.env.NODE_ENV || 'development'
 /* eslint-disable  no-unused-vars */
 const mysql = require('mysql')
 /* eslint-enable  no-unused-vars */
