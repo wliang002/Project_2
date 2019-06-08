@@ -1,3 +1,52 @@
 .list-group-item {
   line-height: 2.5;
 }
+
+body {
+  background-color: #007B89;
+}
+
+h1 {
+  color: #E4B320;
+  text-align: center;
+  font-family: 'Fredericka the Great', cursive;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.4), 0 0 15px rgba(255,255,255,0.4);
+  font-size: 80px;
+}
+
+h2 {
+   color: #DA7A22;
+   text-align: center;
+   font-family: 'Great Vibes', cursive;
+   font-size: 40px;
+}
+
+p {
+   color: #CECDC9;
+   font-family: 'Lustria', serif;
+   font-size: 17px;
+   text-align: center;
+}
+
+.btn {
+  background-color: #E4B320;
+  color: white;
+  font-family: 'Fredericka the Great', cursive;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+
+}
+
+.AppDescriptionContainer p {
+  text-align: left;
+}
+
+.AppDescriptionContainer strong {
+  font-family: 'Fredericka the Great', cursive;
+}
+
+.LearnTeachButtonContainer {
+  text-align: center;
+}
