@@ -8,10 +8,10 @@ const express = require('express')
 const exphbs = require('express-handlebars')
 
 const db = require('./models/example') // eslint-disable no-unused-consts
+console.log(db)
 
 const app = express()
 const PORT = process.env.PORT || 3000
-const ENV = process.env.NODE_ENV || 'development'
 
 // Middleware
 app.use(express.urlencoded({ extended: false }))
