@@ -28,7 +28,7 @@ p {
    text-align: center;
 }
 
-.btn {
+.teachButton {
   background-color: #E4B320;
   color: white;
   font-family: 'Fredericka the Great', cursive;
@@ -36,17 +36,72 @@ p {
   padding-right: 30px;
   padding-bottom: 10px;
   padding-top: 10px;
-
 }
+
+.categoryButton {
+  background-color: #DA7A22;
+  color: white;
+  font-family: 'Fredericka the Great', cursive;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.mainImageContainer {
+  text-align: center;
+}
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+/* .AppDescriptionContainer {
+  background:url('https://via.placeholder.com/1980x800') no-repeat center center fixed ;
+  min-width: 100%;
+  min-height: 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover
+} */
 
 .AppDescriptionContainer p {
-  text-align: left;
+  text-align: center;
 }
 
-.AppDescriptionContainer strong {
+.AppDescriptionContainer strong, .selectedCategory {
+  color: #E4B320;
   font-family: 'Fredericka the Great', cursive;
 }
 
-.LearnTeachButtonContainer {
+.teachButtonContainer, .classCategoriesContainer {
   text-align: center;
+}
+
+#selectedCategoryResults h1 {
+  font-size: 40px;
+  text-shadow: none;
+}
+
+#selectedCategoryResults {
+  text-align: left;
+}
+
+.ClassInSelectedCategory {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-top:10px;
+  padding-bottom: 10px;
+  background-color: rgb(73, 105, 109);
+}
+
+.ClassInSelectedCategory p {
+  color: white;
+}
+
+.ClassInSelectedCategory strong {
+  color: #DA7A22;
+  font-family: 'Great Vibes', cursive;
+  font-size: 25px;
 }
