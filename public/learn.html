@@ -45,25 +45,29 @@
             <ul id="selectedCategoryResults" class="list-group">
               <!-- !!!!!!!!!! delete this mock result -->
               <li class='ClassInSelectedCategory'>
-                <h1>Class: Spoon carving</h2>
-                  <p><strong>Taught by:</strong> Luke Garrison</p>
-                  <p><strong>Location:</strong> 124 Bolinas Road, Fairfax, CA 94930</p>
-                  <p><strong>Date:</strong> Wednesday, June 12th, 2019</p>
-                  <p><strong>Time:</strong> 2:30PM - 5:30PM</p>
-                  <p><strong>Description:</strong> Wooden blanks and carving tools provided. Beginners welcome. come
-                    learn how to carve a wooden spoon, how to oil and finish the spoon, and how to take care of your new
-                    spoon. </p>
-
+                <h1>Class: Spoon carving</h1>
+                <p><strong>Taught by:</strong> Luke Garrison</p>
+                <p><strong>Location:</strong> 124 Bolinas Road, Fairfax, CA 94930</p>
+                <p><strong>Date:</strong> Wednesday, June 12th, 2019</p>
+                <p><strong>Time:</strong> 2:30PM - 5:30PM</p>
+                <p><strong>Description:</strong> Wooden blanks and carving tools provided. Beginners welcome. Come learn
+                  how to carve a wooden spoon, how to oil and finish the spoon, and how to take care of your new spoon.
+                </p>
+                <div class="text-center"><button type="button" class="btn btn-lg btn-success signUpButton">
+                    <h4>Sign up now!</h4>
+                  </button></div>
               </li>
               <li class='ClassInSelectedCategory'>
-                <h1>Class: Wooden heart pendants</h2>
-                  <p><strong>Taught by:</strong> Hetty Chin</p>
-                  <p><strong>Location:</strong> 124 Bolinas Road, Fairfax, CA 94930</p>
-                  <p><strong>Date:</strong> Wednesday, June 12th, 2019</p>
-                  <p><strong>Time:</strong> 2:30PM - 5:30PM</p>
-                  <p><strong>Description:</strong> Wooden blanks and carving tools provided. Beginners welcome. come
-                    learn how to carve a wooden spoon, how to oil and finish the spoon, and how to take care of your new
-                    spoon. </p>
+                <h1>Class: Wooden heart pendants</h1>
+                <p><strong>Taught by:</strong> Hetty Chin</p>
+                <p><strong>Location:</strong> 124 Bolinas Road, Fairfax, CA 94930</p>
+                <p><strong>Date:</strong> Wednesday, June 12th, 2019</p>
+                <p><strong>Time:</strong> 2:30PM - 5:30PM</p>
+                <p><strong>Description:</strong> Wooden blanks and carving tools provided. Beginners welcome. Come learn
+                  how to carve a wooden heart pendant, add an eyelet, and braid a new cord for your new necklace. </p>
+                <div class="text-center"><button type="button" class="btn btn-lg btn-success signUpButton">
+                    <h4>Sign up now!</h4>
+                  </button></div>
               </li>
             </ul>
           </div>
@@ -107,23 +111,50 @@
           <h4>Teach</h4>
         </button></a>
     </div>
-    
+
     <!-- Modal -->
-    <div id="results-modal" class="modal fade" role="dialog">
+    <div id="signUpModal" class="modal fade" role="dialog">
       <div class="modal-dialog">
 
         <!-- Modal content-->
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h2 class="modal-title"><strong>Best Match</strong></h2>
+            <h2 class="modal-title"><strong>Class name</strong></h2>
           </div>
           <div class="modal-body">
             <h2 id="match-name"></h2>
             <img id="match-img" style="max-width: 500px">
+            <div class="signUpForm">
+              <form>
+                <div class="form-group">
+                  <label for="studentsName">Your name:</label>
+                  <textarea class="form-control" id="studentsName" rows="1"></textarea>
+                </div>
+
+                <div class="form-group">
+                  <label for="exampleFormControlInput1">Your email address:</label>
+                  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="numberInParty">How many people are in your party?</label>
+                    <select multiple class="form-control" id="numberInParty">
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                    </select>
+                  </div>
+
+              </form>
+            </div>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <div class="modal-footer text-center">
+            <button type="button" class="btn btn-lg btn-success signUpButton" data-dismiss="modal">
+              <h4>Sign up!</h4>
+            </button>
           </div>
         </div>
 
@@ -145,6 +176,8 @@
           ListClassesInSelectedCategory.append("<p><strong>Date:<strong> " + data[i].date);
           ListClassesInSelectedCategory.append("<p><strong>Time:<strong> " + data[i].time);
           ListClassesInSelectedCategory.append("<p><strong>Description:<strong> " + data[i].description);
+          // !!!!!!!!!! somehow the button has to connect with the submit field to prompts the modal
+          ListClassesInSelectedCategory.append(`<div class="text-center"><button type="button" class="btn btn-lg btn-success signUpButton><h4>Sign up now!</h4></button></div>`)
 
           $("#character-section").append(ListClassesInSelectedCategory);
         }
@@ -223,7 +256,7 @@
             $("#match-img").attr("src", data.photo);
 
             // Show the modal with the best match
-            $("#results-modal").modal("toggle");
+            $("#signUpModal").modal("toggle");
 
           });
 
