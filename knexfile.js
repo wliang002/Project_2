@@ -6,7 +6,7 @@ module.exports = {
     connection: {
       host: 'localhost',
       port: 3306,
-      database: 'testdb',
+      database: 'eventsdb',
       user: 'nodeUser',
       password: ''
     }
@@ -17,7 +17,7 @@ module.exports = {
     connection: {
       host: 'localhost',
       port: 3306,
-      database: 'testdb',
+      database: 'eventsdb',
       user: 'nodeUser',
       password: ''
     },
@@ -35,7 +35,7 @@ module.exports = {
     connection: {
       host: 'localhost',
       port: 3306,
-      database: 'testdb',
+      database: 'eventsdb',
       user: 'nodeUser',
       password: ''
     },

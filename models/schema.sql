@@ -10,8 +10,7 @@ CREATE TABLE classes
     eventlocation VARCHAR(100) NOT NULL,
     eventdate DATE NOT NULL,
     eventtime TIME NOT NULL,
-    CURRENT_DATE,
-    eventdescription VARCHAR(1000) NOT NULL,
+    eventdescription VARCHAR(4000) NOT NULL,
     PRIMARY KEY(id)
 )
 
