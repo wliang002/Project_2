@@ -1,5 +1,5 @@
 // Dependecies
-const Example = require('../models/example')
+// const Example = require('../models/example')
 
 const path = require('path')
 
@@ -10,7 +10,6 @@ const path = require('path')
  *
  */
 module.exports = function (app) {
-
   app.get('/home', function (req, res) {
     res.sendFile(path.join(__dirname, '../public/index.html'))
   })
