@@ -1,6 +1,5 @@
 DROP DATABASE IF EXISTS eventsDB;
 CREATE DATABASE eventsDB;
-USE eventsDB;
 
 -- CREATE TABLE classes
 -- (

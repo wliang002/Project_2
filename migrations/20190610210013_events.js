@@ -9,7 +9,7 @@ exports.up = function (knex, Promise) {
       table.string('eventlocation', 255).notNullable()
       table.string('eventdate', 255).notNullable()
       table.string('eventtime', 255).notNullable()
-      table.string('eventdescription', 255).notNullable();
+      table.string('eventdescription', 255).notNullable()
     })
 }
 
