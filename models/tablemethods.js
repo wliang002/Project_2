@@ -1,5 +1,5 @@
 // *********************************************************************************
-// Example.js - This file offers a set of easier-to-use methods for interacting with the MySQL db.
+// Classes.js - This file offers a set of easier-to-use methods for interacting with the MySQL db.
 // *********************************************************************************
 
 // Dependencies
@@ -7,12 +7,12 @@
 const knex = require('../config/connection.js')
 
 /**
- * Queries the Example database
+ * Queries the Classes database
  *
- * @class Example
+ * @class Classes
  */
-class Example {
-  constructor (table = 'example') {
+class Classes {
+  constructor (table = 'classes') {
     this.table = table
   }
 
@@ -20,7 +20,7 @@ class Example {
    *
    * Find all Examples in the table
    * @returns Promise
-   * @memberof Example
+   * @memberof Classes
    */
   findAll () {
     return knex.select()
@@ -32,7 +32,7 @@ class Example {
  *
  * @param {Object} values The values to insert in the form of {column: value}
  * @returns Promise
- * @memberof Example
+ * @memberof Classes
  */
   create (values) {
     return knex(this.table)
@@ -45,7 +45,7 @@ class Example {
    *
    * @param {Object} where The where clause in the form of {column: value}
    * @returns Promise
-   * @memberof Example
+   * @memberof Classes
    */
   destroy (where) {
     return knex(this.table)
@@ -54,4 +54,4 @@ class Example {
   }
 }
 
-module.exports = new Example()
+module.exports = new Classes()

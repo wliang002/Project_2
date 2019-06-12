@@ -1,5 +1,5 @@
 // Dependencies
-const Example = require('../models/example')
+const Example = require('../models/tablemethods')
 
 /**
  * apiRoutes: This routes file returns data to the client/view

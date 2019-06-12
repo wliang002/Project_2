@@ -6,7 +6,7 @@ require('dotenv').config()
 
 const express = require('express')
 
-const db = require('./models/example') // eslint-disable no-unused-consts
+const db = require('./models/tablemethods') // eslint-disable no-unused-consts
 console.log(db)
 
 const app = express()
