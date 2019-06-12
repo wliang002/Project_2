@@ -17,7 +17,7 @@ module.exports = {
     connection: {
       host: 'localhost',
       port: 3306,
-      database: 'eventsdb',
+      database: 'testdb',
       user: 'nodeUser',
       password: ''
     },
