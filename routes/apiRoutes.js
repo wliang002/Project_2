@@ -1,5 +1,5 @@
 // Dependencies
-const Example = require('../models/tablemethods')
+const Class = require('../models/classes')
 
 /**
  * apiRoutes: This routes file returns data to the client/view
@@ -9,27 +9,27 @@ const Example = require('../models/tablemethods')
  */
 
 module.exports = function (app) {
-  // Get all examples
-  app.get('/api/examples', function (req, res) {
-    Example.findAll()
-      .then(function (dbExamples) {
-        res.json(dbExamples)
+  // Get all classes
+  app.get('/api/events', function (req, res) {
+    Class.findAll()
+      .then(function (dbClasses) {
+        res.json(dbClasses)
       })
   })
 
-  // Create a new example
-  app.post('/api/examples', function (req, res) {
-    Example.create(req.body)
-      .then(function (dbExample) {
-        res.json(dbExample)
+  // Create a new class
+  app.post('/api/events', function (req, res) {
+    Class.create(req.body)
+      .then(function (dbClass) {
+        res.json(dbClass)
       })
   })
 
-  // Delete an example by id
-  app.delete('/api/examples/:id', function (req, res) {
-    Example.destroy(req.params)
-      .then(function (dbExample) {
-        res.json(dbExample)
+  // Delete a class by id
+  app.delete('/api/events/:id', function (req, res) {
+    Class.destroy(req.params)
+      .then(function (dbClass) {
+        res.json(dbClass)
       })
   })
 }
