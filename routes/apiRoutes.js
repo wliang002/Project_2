@@ -10,15 +10,21 @@ const Class = require('../models/classes')
 
 module.exports = function (app) {
   // Get all classes
-  app.get('/api/events', function (req, res) {
+  app.get('/learn', function (req, res) {
     Class.findAll()
       .then(function (dbClasses) {
         res.json(dbClasses)
       })
   })
 
+  app.get('/learn/:category', function (req, res) {
+    var chosen = req.params.category
+
+    console.log(`category selected: ${chosen}`)
+  })
+
   // Create a new class
-  app.post('/api/events', function (req, res) {
+  app.post('/teach', function (req, res) {
     Class.create(req.body)
       .then(function (dbClass) {
         res.json(dbClass)
@@ -26,7 +32,7 @@ module.exports = function (app) {
   })
 
   // Delete a class by id
-  app.delete('/api/events/:id', function (req, res) {
+  app.delete('/teach/:id', function (req, res) {
     Class.destroy(req.params)
       .then(function (dbClass) {
         res.json(dbClass)
