@@ -1,5 +1,5 @@
 // Dependecies
-// const Example = require('../models/example')
+// const tableData = require('../models/classes')
 
 const path = require('path')
 
