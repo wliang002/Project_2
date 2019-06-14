@@ -16,8 +16,8 @@ window.onload = function () {
   }
   // this function removes duplicate categoryButtons
   function getUnique (array) {
-    var uniqueArray = [];
-    for (i =0; i < array.length; i++) {
+    var uniqueArray = []
+    for (i = 0; i < array.length; i++) {
       if (uniqueArray.indexOf(array[i]) === -1) {
         uniqueArray.push(array[i])
       }
@@ -49,12 +49,13 @@ window.onload = function () {
       })
   }
 
-  // this function constructs a new category button but i think this constructs a new button FOR ALL classes, I may have to throw all categories pulled from database into an array then make them unique then for each unique category create a button
+  // this function constructs a new category button
   function createNewCategoryButton (category) {
     console.log('createNewCategoryButton function was called')
     let newCategoryButton = `<a href="/learn/${category.category}"><button type="button" class="btn btn-lg btn-success categoryButton" data-id='${category.category}'><h4>${category.category}</h4></button></a>`
     return newCategoryButton
   }
+  // !!!!!this function removes the comma from the buttons array
 }
 
 // var exampleText = document.querySelector('#example-text')
