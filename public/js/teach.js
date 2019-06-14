@@ -1,4 +1,5 @@
 window.onload = function () {
+
     // Getting a reference to the input field where user adds a new class
     var $newTname = document.querySelector('#teachersName')
     var $newCategory = document.querySelector('#categorySelect')
@@ -45,8 +46,9 @@ window.onload = function () {
 
           }
           
-
-
+        }
+      }
+    })
   
     document.querySelector('#addClass').addEventListener('submit', insertClass)
   
@@ -83,22 +85,22 @@ window.onload = function () {
     
   
     // This function constructs a class row
-    function createNewRow (class) {
+    function createNewRow (lecture) {
   
       let newInputRow = `
-          <li class='list-group-item class' data-completed='${class.completed}' data-class='${class.id}'>
-          <span class='teacher' id='teacherName${class.id}'}'>${class.teacher}</span>
-          <span class='eventname' id='eventName${class.id}'}'>${class.eventname}</span>
-          <span class='eventcategory' id='eventCat${class.id}'}'>${class.category}</span>
-          <span class='eventlocation' id='eventLoc${class.id}'}'>${class.eventlocation}</span>
-          <span class='eventdate' id='eventDate${class.id}'}'>${class.everntdate}</span>
-          <span class='eventtime' id='eventTime${class.id}'}'>${class.eventtime}</span>
-          <span class='eventdescript' id='eventDescript${class.id}'}'>${class.eventdescription}</span>
+          <li class='list-group-item class' data-completed='${lecture.completed}' data-class='${lecture.id}'>
+          <span class='teacher' id='teacherName${lecture.id}'}'>${lecture.teacher}</span>
+          <span class='eventname' id='eventName${lecture.id}'}'>${lecture.eventname}</span>
+          <span class='eventcategory' id='eventCat${lecture.id}'}'>${lecture.category}</span>
+          <span class='eventlocation' id='eventLoc${lecture.id}'}'>${lecture.eventlocation}</span>
+          <span class='eventdate' id='eventDate${lecture.id}'}'>${lecture.everntdate}</span>
+          <span class='eventtime' id='eventTime${lecture.id}'}'>${lecture.eventtime}</span>
+          <span class='eventdescript' id='eventDescript${lecture.id}'}'>${lecture.eventdescription}</span>
 
           <input type='text' class='edit' style='visibility: hidden;'>
-          <button type="button" data-id='${class.id}' style='visibility: hidden;' class="edit btn btn-secondary">Save</button>
-          <button type="button" data-id='${class.id}' class="delete btn btn-danger btn-lg">Remove</button>
-          <button type="button" data-completed='${class.completed}' data-id='${class.id}' class="complete btn btn-primary btn-lg">Done</button>
+          <button type="button" data-id='${lecture.id}' style='visibility: hidden;' class="edit btn btn-secondary">Save</button>
+          <button type="button" data-id='${lecture.id}' class="delete btn btn-danger btn-lg">Remove</button>
+          <button type="button" data-completed='${lecture.completed}' data-id='${lecture.id}' class="complete btn btn-primary btn-lg">Done</button>
           </li>`
   
       return newInputRow
@@ -106,17 +108,23 @@ window.onload = function () {
   
     // This function inserts a new todo into our database and then updates the view
     function insertClass (event) {
+
       event.preventDefault()
-      var todo = {
-        text: $newItemInput.value.trim(),
-        completed: 0
+      let addClassForm = event.currentTarget
+
+      var lecture = {
+        teacher: $newTname.value.trim(),
+        category: $newCategory,
+        location: $newLocation.value.trim()
       }
+
+      
   
       // Send the POST request.
       fetch('/api/classes', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(todo)
+        body: JSON.stringify(lecture)
       })
         // On success, run the following code
         .then(function (data) {
@@ -128,4 +136,4 @@ window.onload = function () {
       $newItemInput.value = ''
     }
   }
-  
+
