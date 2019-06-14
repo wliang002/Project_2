@@ -40,7 +40,7 @@ window.onload = function () {
   }
   // this function grabs the categories from the database and updates the view
   function getCategories () {
-    fetch('/api/events')
+    fetch('/learn')
       .then(results => results.json())
       .then(function (data) {
         categories = data
