@@ -16,7 +16,7 @@ window.onload = function () {
           event.stopPropagation()
           let id = event.target.dataset.id
   
-          fetch('/api/events/' + id, {
+          fetch('/teach/:id', {
             method: 'DELETE'
           })
             .then(function (data) {
@@ -72,7 +72,7 @@ window.onload = function () {
   
     // This function grabs classes from the database and updates the view
     function getClasses () {
-      fetch('/api/events')
+      fetch('/learn')
         .then(results => results.json())
         .then(function (data) {
           classes = data
