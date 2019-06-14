@@ -1,4 +1,46 @@
-// Get references to page elements
+// run everything when the window loads
+window.onload = function () {
+  console.log('index page has loaded')
+  // Get references to page elements
+  var $classCategoriesContainer = document.querySelector('.classCategoriesContainer')
+  // our initial categories array
+  var categories = []
+  // getting categories when the page loads
+  getCategories()
+  // this function clears existing dummy buttons
+  function clearDummyButtons () {
+    $classCategoriesContainer.innerHTML = ''
+    console.log('all existing categories buttons have been erased')
+  }
+  // this function displays the category buttons
+  function displayButtons () {
+    console.log('displayButtons function was called')
+    var categoryButtonsToAdd = []
+    for (var i = 0; i < categories.length; i++) {
+      categoryButtonsToAdd.push(createNewCategoryButton(categories[i]))
+    }
+    $classCategoriesContainer.insertAdjacentHTML('afterbegin', categoryButtonsToAdd)
+  }
+  // this function grabs the categories from the database and updates the view
+  function getCategories () {
+    fetch('/api/events')
+      .then(results => results.json())
+      .then(function (data) {
+        categories = data
+        console.log('get all data', categories)
+        displayButtons(categories)
+        clearDummyButtons()
+      })
+  }
+
+  // this function constructs a new category button but i think this constructs a new button FOR ALL classes, I may have to throw all categories pulled from database into an array then make them unique then for each unique category create a button
+  function createNewCategoryButton (category) {
+    console.log('createNewCategoryButton function was called')
+    let newCategoryButton = `<a href="/learn/${category.text}"><button type="button" class="btn btn-lg btn-success categoryButton" data-id='${category.text}'><h4>${category.text}/h4></button></a>`
+    return newCategoryButton
+  }
+}
+
 // var exampleText = document.querySelector('#example-text')
 // var exampleDescription = document.querySelector('#example-description')
 // var submitBtn = document.querySelector('#submit')
