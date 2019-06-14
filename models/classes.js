@@ -5,7 +5,7 @@
 const knex = require('../config/connection.js')
 
 /**
- * Queries the todo database
+ * Queries the class database
  *
  * @class Class
  */
@@ -38,7 +38,7 @@ class Class {
    *
    * @param {Object} values The values to insert in the form of {column: value}
    * @returns Promise
-   * @memberof Todo
+   * @memberof Classes
    */
   create (values) {
     return knex(this.table)
@@ -51,7 +51,7 @@ class Class {
    *
    * @param {Object} where The where clause in the form of {column: value}
    * @returns Promise
-   * @memberof Class
+   * @memberof Classes
    */
   destroy (where) {
     return knex(this.table)
@@ -65,7 +65,7 @@ class Class {
    * @param {Object} where The where clause in the form of {column: value}
    * @param {Object} values The values to update in the form of {column: value}
    * @returns Promise
-   * @memberof Todo
+   * @memberof Classes
    */
   update (where, values) {
     return knex(this.table)
@@ -74,12 +74,12 @@ class Class {
   }
 
   /**
-   * Finds 1 or more todos based on search criteria
+   * Finds 1 or more classes based on search criteria
    *
    * @param {Object} where The where clause in the form of {column: value}
-   * @default {Object} [orderBy={}] Optional Direction to order `category` column
+   * @default {Object} [orderBy={}] Optional Direction to order `eventname` column
    * @returns Promise
-   * @memberof Todo
+   * @memberof Classes
    */
   find (where, orderBy = {}) {
     let mergedOrder = Object.assign({}, this.defaultOrder, orderBy)

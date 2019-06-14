@@ -72,7 +72,7 @@ window.onload = function () {
   
     // This function grabs classes from the database and updates the view
     function getClasses () {
-      fetch('/learn')
+      fetch('/allData')
         .then(results => results.json())
         .then(function (data) {
           classes = data
