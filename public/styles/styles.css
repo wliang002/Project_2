@@ -17,6 +17,19 @@ h2 {
    font-size: 40px;
 }
 
+hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 0;
+  border-top: 1px solid #eee;
+}
+
+.card {
+  background-color: transparent;
+  background-clip: none;
+  border: none;
+}
+
 p {
    color: #CECDC9;
    font-family: 'Lustria', serif;

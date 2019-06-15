@@ -17,8 +17,8 @@ module.exports = function (app) {
       })
   })
 
-  // this only returns classes from the chosen category -- for "learn" pages
-  app.get('/learn/:category', function (req, res) {
+  // this only returns classes from a chosen category
+  app.get('/viewSelectData/:category', function (req, res) {
     var chosenCategory = req.params.category
     // this logs in the terminal
     console.log(`category selected: ${chosenCategory}`)
