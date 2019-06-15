@@ -51,9 +51,7 @@ module.exports = function (app) {
     })
       .then(function (classesInCategory) {
         console.log(`classes in the chosen category: ${classesInCategory}`)
-        res.render('learn', {
-          classes: classesInCategory
-        })
+        res.render('learn', classesInCategory[0])
       })
   })
 }

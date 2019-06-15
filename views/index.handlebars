@@ -1,12 +1,69 @@
-<div class="container">
+<body>
+    <!-- header with a dropdown menu and login -->
+    <header class="siteheader">
+        <div class="siteheaderContainer">
+            <a href="/" id="site-logo">Learn Local</a>
+            <div class="dropdown">
+                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Browse
+                </a>
 
-        <h1>Learn Local INDEX HANDLEBAR</h1>
+                <div class="dropdown-content">
+                    <a class="dropdown-item" href="#">Creative</a>
+                    <a class="dropdown-item" href="#">Business</a>
+                    <a class="dropdown-item" href="#">Lifestyle</a>
+                    <a class="dropdown-item" href="#">Other</a>
+                </div>
+            </div>
+
+            <!-- Login  -->
+            <button class="sign" onclick="document.getElementById('id01').style.display='block'"
+                style="width:auto;">Login</button>
+
+            <div id="id01" class="modal">
+
+                <form class="modal-content animate" action="/action_page.php">
+                    <div class="imgcontainer">
+                        <span onclick="document.getElementById('id01').style.display='none'" class="close"
+                            title="Close Modal">&times;</span>
+                        <img src="../images/login.png" alt="Avatar" class="avatar">
+                    </div>
+
+                    <div class="login-container">
+                        <label for="uname"><b>Username</b></label>
+                        <input type="text" placeholder="Enter Username" name="uname" required>
+
+                        <label for="psw"><b>Password</b></label>
+                        <input type="password" placeholder="Enter Password" name="psw" required>
+
+                        <button class="login-button" type="submit">Login</button>
+                        <label>
+                            <input type="checkbox" checked="checked" name="remember"> Remember me
+                        </label>
+                    </div>
+
+                    <div class="login-container" style="background-color:#f1f1f1">
+                        <button type="button" onclick="document.getElementById('id01').style.display='none'"
+                            class="cancelbtn">Cancel</button>
+                        <span class="psw">Forgot <a href="#">password?</a></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </header>
+
+    <!-- main section of the page -->
+
+    <div class="container">
+
+        <h1>Learn Local INDEX HTML</h1>
         <hr>
         <h2>Building community by learning from one another.</h2>
 
         <div class="AppDescriptionContainer">
             <p><strong>Learn Local</strong> is a community building skillshare platform that connects passionate
-               local artisans with one another.
+                local artisans with one another.
         </div>
 
         <div class="mainImageContainer desktopOnly">
@@ -49,29 +106,43 @@
 
         <div class="teachButtonContainer">
             <a href="/teach"><button type="button" class="btn btn-lg btn-success teachButton">
-                <h4>Teach</h4>
-            </button></a>
+                    <h4>Teach</h4>
+                </button></a>
         </div>
 
+        <!-- 
+        <footer class="footer">
+            <div class="container">
+                <p><a href="/api/friends">API Friends List</a> | <a href="https://github.com/hetty-chin/FriendFinder"
+                        target="_blank">GitHub Repo</a></p>
+            </div>
+        </footer> -->
+
     </div>
-  <!-- Style for image -->
-  <style>
-@media only screen and (max-width: 576px) {
-    .mobileOnly {
-        display: block
-    }
-    .desktopOnly {
-        display: none
-    }
-}
-@media only screen and (min-width: 576px) {
-    .mobileOnly {
-        display: none
-    }
-    .desktopOnly {
-        display: block
-    }
-}
-  </style>
-  <!-- Custom Script -->
-  <script src="js/index.js" type="text/javascript"></script>
+    <!-- Style for image -->
+    <style>
+        @media only screen and (max-width: 576px) {
+            .mobileOnly {
+                display: block
+            }
+
+            .desktopOnly {
+                display: none
+            }
+        }
+
+        @media only screen and (min-width: 576px) {
+            .mobileOnly {
+                display: none
+            }
+
+            .desktopOnly {
+                display: block
+            }
+        }
+    </style>
+    <!-- Custom Script -->
+    <script src="js/index.js" type="text/javascript"></script>
+
+
+</body>

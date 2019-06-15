@@ -1,7 +1,7 @@
 <!-- header with a dropdown menu and login -->
 <header class="siteheader">
-  <div class="site-logo">
-    <a href="./index.html" class="site-logo">LEARN LOCAL</a>
+  <div class="siteheaderContainer">
+    <a href="/" id="site-logo">Learn Local</a>
     <div class="dropdown">
       <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
         aria-haspopup="true" aria-expanded="false">
@@ -57,7 +57,7 @@
 
   <hr>
 
-  <h2>Sign up for a <span class="selectedCategory">[category selected]</span> class happening in your neighborhood.
+  <h2>Sign up for a <span class="selectedCategory">{{this.category}}</span> class happening in your neighborhood.
   </h2>
 
   <div class="AppDescriptionContainer">
@@ -72,28 +72,14 @@
       <div class="card">
         <div class="card-body">
           <ul id="selectedCategoryResults" class="list-group">
-            <!-- !!!!!!!!!! delete this mock result -->
             <li class='ClassInSelectedCategory'>
-              <h1>Class: Spoon carving</h1>
-              <p><strong>Taught by:</strong> Luke Garrison</p>
-              <p><strong>Location:</strong> 124 Bolinas Road, Fairfax, CA 94930</p>
-              <p><strong>Date:</strong> Wednesday, June 12th, 2019</p>
-              <p><strong>Time:</strong> 2:30PM - 5:30PM</p>
-              <p><strong>Description:</strong> Wooden blanks and carving tools provided. Beginners welcome. Come learn
-                how to carve a wooden spoon, how to oil and finish the spoon, and how to take care of your new spoon.
+              <h1>Class: {{this.eventname}}</h1>
+              <p><strong>Taught by:</strong> {{this.teacher}}</p>
+              <p><strong>Location:</strong> {{this.eventlocation}}</p>
+              <p><strong>Date:</strong> {{this.eventdate}}</p>
+              <p><strong>Time:</strong> {{this.eventtime}}</p>
+              <p><strong>Description:</strong> {{this.eventdescription}}
               </p>
-              <div class="text-center"><button type="button" class="btn btn-lg btn-success signUpButton">
-                  <h4>Sign up now!</h4>
-                </button></div>
-            </li>
-            <li class='ClassInSelectedCategory'>
-              <h1>Class: Wooden heart pendants</h1>
-              <p><strong>Taught by:</strong> Hetty Chin</p>
-              <p><strong>Location:</strong> 124 Bolinas Road, Fairfax, CA 94930</p>
-              <p><strong>Date:</strong> Wednesday, June 12th, 2019</p>
-              <p><strong>Time:</strong> 2:30PM - 5:30PM</p>
-              <p><strong>Description:</strong> Wooden blanks and carving tools provided. Beginners welcome. Come learn
-                how to carve a wooden heart pendant, add an eyelet, and braid a new cord for your new necklace. </p>
               <div class="text-center"><button type="button" class="btn btn-lg btn-success signUpButton">
                   <h4>Sign up now!</h4>
                 </button></div>
