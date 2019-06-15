@@ -143,27 +143,5 @@
 
 </div>
 <script>
-  $(".classBtn").click(function () {
-    var selectedBtn = $(this).text().trim().toLowerCase();
-    var id = $(this).data("classid")
-
-    switch (selectedBtn) {
-      case update:
-        updateClass(id)
-        break;
-      case delete:
-        deleteClass(id)
-        break;
-      default:
-        alert("try again")
-    }
-  })
-
-  function updateClass(id) {
-
-  }
-
-  function deleteClass(id) {
-    // call api to delete class by id then location.refresh()
-  }
+  
 </script>
