@@ -33,7 +33,7 @@ module.exports = {
   production: {
     client: 'mysql',
     connection: {
-      host: 'localhost',
+      host: process.env.DATABASE_URL,
       port: 3306,
       database: 'eventsdb',
       user: 'nodeUser',
