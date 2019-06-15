@@ -1,3 +1,4 @@
+
 {
   "name": "project2hed",
   "version": "1.0.0",
@@ -5,24 +6,42 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js",
-    "lint": "standard --verbose | snazzy",
+    "lint": "standard --global describe --global fetch --global alert --global beforeEach --verbose | snazzy",
     "fix": "standard --fix .",
-    "test": "npm run lint && cross-env NODE_ENV=test mocha -u tdd --reporter spec --exit"
+    "pretest": "knex migrate:latest --env staging",
+    "test": "npm run lint && cross-env NODE_ENV=staging mocha -u bdd --reporter spec --exit"
   },
   "license": "ISC",
   "dependencies": {
+    "chai-as-promised": "^7.1.1",
     "dotenv": "^8.0.0",
-    "express": "^4.17.1",
+    "express": "^4.17.0",
     "express-handlebars": "^3.1.0",
-    "knex": "^0.17.3",
-    "mysql": "^2.17.1",
+    "knex": "^0.17.0",
+    "mysql": "^2.12.0",
     "snazzy": "^8.0.0"
   },
   "devDependencies": {
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
     "cross-env": "^5.2.0",
-    "standard": "^12.0.1",
-    "mocha": "^6.1.4"
+    "mocha": "^6.1.4",
+    "standard": "^12.0.1"
+  },
+  "standard": {
+    "ignore": [
+      "/seeds",
+      "/migrations",
+      "/test/*.js",
+      "tmp.js"
+    ],
+    "global": [
+      "describe",
+      "it",
+      "beforeEach",
+      "fetch",
+      "const",
+      "alert"
+    ]
   }
 }
