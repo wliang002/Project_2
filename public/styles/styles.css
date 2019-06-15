@@ -8,6 +8,7 @@ h1 {
   font-family: 'Fredericka the Great', cursive;
   text-shadow: 1px 1px 0 rgba(0,0,0,0.4), 0 0 15px rgba(255,255,255,0.4);
   font-size: 80px;
+  padding-top:20px;
 }
 
 .class-title {
@@ -64,6 +65,20 @@ p {
   padding-bottom: 10px;
   padding-top: 10px;
   margin-bottom:20px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.addClassbtn {
+  font-family: 'Fredericka the Great', cursive;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  margin-bottom:20px;
+  margin-left: 5px;
+  margin-right: 5px;
+  font-size: 24px;
 }
 
 .mainImageContainer {
@@ -75,15 +90,11 @@ p {
   height: auto;
 }
 
-/* .AppDescriptionContainer {
-  background:url('https://via.placeholder.com/1980x800') no-repeat center center fixed ;
-  min-width: 100%;
-  min-height: 100%;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover
-} */
-
+.fourOhFour a {
+  color: rgb(73, 105, 109);
+  font-family: 'Lustria', serif;
+  font-size: 17px;
+}
 .AppDescriptionContainer p {
   text-align: center;
 }
@@ -151,6 +162,10 @@ p {
   margin-bottom: 10px;
 }
 
+.updateButton h4, .deleteButton h4, .categoryButton h4, .teachButton h4 {
+  margin-bottom: 0px;
+}
+
 .modal-title {
   font-size: 40px;
   color: #E4B320;
@@ -185,13 +200,15 @@ form label {
 
 .siteheaderContainer {
   font-family: 'Lustria', serif;
-  font-size: 17px;
 }
 
 #site-logo {
   color: #E4B320;
+  font-size: 20px;
   font-family: 'Fredericka the Great', cursive;
   text-shadow: 1px 1px 0 rgba(0,0,0,0.4), 0 0 15px rgba(255,255,255,0.4);
+  float: left;
+  margin-top: 5px;
 }
 
 .dropdown {
@@ -204,6 +221,7 @@ form label {
   font-size: 17px;
   color:#DA7A22;
   text-shadow: 1px 1px 0 rgba(0,0,0,0.4), 0 0 15px rgba(255,255,255,0.4);
+  margin-top: 5px;
 }
 
 .dropdown-content {
@@ -369,7 +387,6 @@ span.psw {
      width: 100%;
   }
 }
-
 
 /* main section */
 .container {
