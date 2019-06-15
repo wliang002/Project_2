@@ -11,7 +11,9 @@
 
       <div class="dropdown-content">
         {{#each categories}}
-         <a href="/learn/{{url}}"><h5 style="color: #007B89">{{text}}</h5></a>    
+        <a href="/learn/{{url}}">
+          <h5 style="color: #007B89">{{text}}</h5>
+        </a>
         {{/each}}
       </div>
     </div>
@@ -57,7 +59,8 @@
 
   <hr>
 
-  <h2>Sign up for a <span class="selectedCategory">{{#each categories}}{{url}}{{/each}}</span> class happening in your neighborhood.
+  <h2>Sign up for a <span class="selectedCategory">{{#each categories}}{{url}}{{/each}}</span> class happening in your
+    neighborhood.
   </h2>
 
   <div class="AppDescriptionContainer">
@@ -72,7 +75,7 @@
       <div class="card">
         <div class="card-body">
           <ul id="selectedCategoryResults" class="list-group">
-          {{#each classes}}
+            {{#each classes}}
             <li class='ClassInSelectedCategory'>
               <h1>Class: {{eventname}}</h1>
               <p><strong>Taught by:</strong> {{teacher}}</p>
@@ -99,8 +102,8 @@
     </p>
   </div>
 
-  <div class="" align="center">
-    
+  <div class="classCategoriesContainer" align="center">
+
   </div>
 
   <hr>
@@ -178,7 +181,7 @@
   window.onload = function () {
     console.log('index page has loaded')
     // Get references to page elements
-    // var $classCategoriesContainer = document.querySelector('.classCategoriesContainer')
+    var $classCategoriesContainer = document.querySelector('.classCategoriesContainer')
     var $dropDownContent = document.querySelector('.dropdown-content')
 
     // our initial categories array
@@ -193,7 +196,7 @@
 
     // this function clears existing dummy buttons
     function clearDummyButtons() {
-      // $classCategoriesContainer.innerHTML = ''
+      $classCategoriesContainer.innerHTML = ''
       $dropDownContent.innerHTML = ''
       console.log('all existing categories buttons have been erased')
     }
@@ -222,7 +225,7 @@
       uniqueCategoryButtonsToAdd = getUnique(categoryButtonsToAdd)
       console.log('the new unique buttons are: ' + uniqueCategoryButtonsToAdd)
 
-      //$classCategoriesContainer.insertAdjacentHTML('afterbegin', uniqueCategoryButtonsToAdd)
+      $classCategoriesContainer.insertAdjacentHTML('afterbegin', uniqueCategoryButtonsToAdd.join(''))
 
     }
 
