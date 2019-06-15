@@ -87,13 +87,6 @@ window.onload = function () {
     let newDropDowns = `<a class="dropdown-item" href="/learn/${category.category}">${category.category}</a>`
     return newDropDowns
   }
-
-  // !!!!!this function removes the comma from the buttons array
-  function removeCommas () {
-    $classCategoriesContainer.join('')
-  }
-
-  removeCommas()
 }
 
 // var exampleText = document.querySelector('#example-text')
