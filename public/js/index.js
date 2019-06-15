@@ -45,7 +45,7 @@ window.onload = function () {
     // capture only unique buttons
     uniqueCategoryButtonsToAdd = getUnique(categoryButtonsToAdd)
     console.log('the new unique buttons are: ' + uniqueCategoryButtonsToAdd)
-    $classCategoriesContainer.insertAdjacentHTML('afterbegin', uniqueCategoryButtonsToAdd)
+    $classCategoriesContainer.insertAdjacentHTML('afterbegin', uniqueCategoryButtonsToAdd.join(''))
   }
 
   // this function displays the drop downss
@@ -59,7 +59,7 @@ window.onload = function () {
     // capture only unique buttons
     uniqueDropDownsToAdd = getUnique(DropDownsToAdd)
     console.log('the new unique dropdowns are: ' + uniqueDropDownsToAdd)
-    $dropDownContent.insertAdjacentHTML('afterbegin', uniqueDropDownsToAdd)
+    $dropDownContent.insertAdjacentHTML('afterbegin', uniqueDropDownsToAdd.join(''))
   }
 
   // this function grabs the categories from the database and updates the view
@@ -90,7 +90,7 @@ window.onload = function () {
 
   // !!!!!this function removes the comma from the buttons array
   function removeCommas () {
-    $classCategoriesContainer.innerHTML.replace(',', '')
+    $classCategoriesContainer.join('')
   }
 
   removeCommas()
