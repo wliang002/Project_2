@@ -1,242 +1,228 @@
-<body>
-    <!-- header with a dropdown menu and login -->
-    <header class="siteheader">
-        <div class="siteheaderContainer">
-            <a href="/" id="site-logo">Learn Local</a>
-            <div class="dropdown">
-                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Browse
-                </a>
+<!-- header with a dropdown menu and login -->
+<header class="siteheader">
+    <div class="siteheaderContainer">
+        <div id="site-logo"><a href="/" id="site-logo">Learn Local</a></div>
+        <div class="dropdown">
+            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Browse
+            </a>
 
-                <div class="dropdown-content">
-                    <a class="dropdown-item" href="#">Creative</a>
-                    <a class="dropdown-item" href="#">Business</a>
-                    <a class="dropdown-item" href="#">Lifestyle</a>
-                    <a class="dropdown-item" href="#">Other</a>
+            <div class="dropdown-content">
+                <a class="dropdown-item" href="#">Creative</a>
+                <a class="dropdown-item" href="#">Business</a>
+                <a class="dropdown-item" href="#">Lifestyle</a>
+                <a class="dropdown-item" href="#">Other</a>
+            </div>
+        </div>
+
+        <!-- Login  -->
+        <button class="sign" onclick="document.getElementById('id01').style.display='block'"
+            style="width:auto;">Login</button>
+
+        <div id="id01" class="modal">
+
+            <form class="modal-content animate" action="/action_page.php">
+                <div class="imgcontainer">
+                    <span onclick="document.getElementById('id01').style.display='none'" class="close"
+                        title="Close Modal">&times;</span>
+                    <img src="../images/login.png" alt="Avatar" class="avatar">
                 </div>
-            </div>
 
-            <!-- Login  -->
-            <button class="sign" onclick="document.getElementById('id01').style.display='block'"
-                style="width:auto;">Login</button>
+                <div class="login-container">
+                    <label for="uname"><b>Username</b></label>
+                    <input type="text" placeholder="Enter Username" name="uname" required>
 
-            <div id="id01" class="modal">
+                    <label for="psw"><b>Password</b></label>
+                    <input type="password" placeholder="Enter Password" name="psw" required>
 
-                <form class="modal-content animate" action="/action_page.php">
-                    <div class="imgcontainer">
-                        <span onclick="document.getElementById('id01').style.display='none'" class="close"
-                            title="Close Modal">&times;</span>
-                        <img src="../images/login.png" alt="Avatar" class="avatar">
-                    </div>
+                    <button class="login-button" type="submit">Login</button>
+                    <label>
+                        <input type="checkbox" checked="checked" name="remember"> Remember me
+                    </label>
+                </div>
 
-                    <div class="login-container">
-                        <label for="uname"><b>Username</b></label>
-                        <input type="text" placeholder="Enter Username" name="uname" required>
-
-                        <label for="psw"><b>Password</b></label>
-                        <input type="password" placeholder="Enter Password" name="psw" required>
-
-                        <button class="login-button" type="submit">Login</button>
-                        <label>
-                            <input type="checkbox" checked="checked" name="remember"> Remember me
-                        </label>
-                    </div>
-
-                    <div class="login-container" style="background-color:#f1f1f1">
-                        <button type="button" onclick="document.getElementById('id01').style.display='none'"
-                            class="cancelbtn">Cancel</button>
-                        <span class="psw">Forgot <a href="#">password?</a></span>
-                    </div>
-                </form>
-            </div>
+                <div class="login-container" style="background-color:#f1f1f1">
+                    <button type="button" onclick="document.getElementById('id01').style.display='none'"
+                        class="cancelbtn">Cancel</button>
+                    <span class="psw">Forgot <a href="#">password?</a></span>
+                </div>
+            </form>
         </div>
-    </header>
-
-    <!-- main section of the page -->
-
-    <div class="container">
-
-        <h1>Learn Local INDEX HTML</h1>
-        <hr>
-        <h2>Building community by learning from one another.</h2>
-
-        <div class="AppDescriptionContainer">
-            <p><strong>Learn Local</strong> is a community building skillshare platform that connects passionate
-                local artisans with one another.
-        </div>
-
-        <div class="mainImageContainer desktopOnly">
-            <img src="images/backgrounddesktop1200x800.jpg" class="img-fluid" alt=''>
-        </div>
-        <div class="mainImageContainer mobileOnly">
-            <img src="images/backgroundmobilehearts.jpg" class="img-fluid" alt=''>
-        </div>
-
-        <hr>
-
-        <div class="AppDescriptionContainer">
-            <p>Search for a class happening in your neighborhood.
-            </p>
-        </div>
-
-        <div class="classCategoriesContainer">
-            <button type="button" class="btn btn-lg btn-success categoryButton">
-                <h4>Soap making</h4>
-            </button>
-            <button type="button" class="btn btn-lg btn-success categoryButton">
-                <h4>Spoon carving</h4>
-            </button>
-            <button type="button" class="btn btn-lg btn-success categoryButton">
-                <h4>Knitting</h4>
-            </button>
-            <button type="button" class="btn btn-lg btn-success categoryButton">
-                <h4>Yoga</h4>
-            </button>
-            <button type="button" class="btn btn-lg btn-success categoryButton">
-                <h4>Painting</h4>
-            </button>
-        </div>
-
-        <hr>
-
-        <div class="AppDescriptionContainer">
-            <p>Host a class of your own!</p>
-        </div>
-
-        <div class="teachButtonContainer">
-            <a href="/teach"><button type="button" class="btn btn-lg btn-success teachButton">
-                    <h4>Teach</h4>
-                </button></a>
-        </div>
-
-        <!-- 
-        <footer class="footer">
-            <div class="container">
-                <p><a href="/api/friends">API Friends List</a> | <a href="https://github.com/hetty-chin/FriendFinder"
-                        target="_blank">GitHub Repo</a></p>
-            </div>
-        </footer> -->
-
     </div>
-    <!-- Style for image -->
-    <style>
-        @media only screen and (max-width: 576px) {
-            .mobileOnly {
-                display: block
-            }
+</header>
 
-            .desktopOnly {
-                display: none
-            }
+<!-- main section of the page -->
+
+<div class="container">
+
+    <h1>Learn Local INDEX HTML</h1>
+    <hr>
+    <h2>Building community by learning from one another.</h2>
+
+    <div class="AppDescriptionContainer">
+        <p><strong>Learn Local</strong> is a community building skillshare platform that connects passionate
+            local artisans with one another.
+    </div>
+
+    <div class="mainImageContainer desktopOnly">
+        <img src="images/backgrounddesktop1200x800.jpg" class="img-fluid" alt=''>
+    </div>
+    <div class="mainImageContainer mobileOnly">
+        <img src="images/backgroundmobilehearts.jpg" class="img-fluid" alt=''>
+    </div>
+
+    <hr>
+
+    <div class="AppDescriptionContainer">
+        <p>Search for a class happening in your neighborhood.
+        </p>
+    </div>
+
+    <div class="classCategoriesContainer">
+        <button type="button" class="btn btn-lg btn-success categoryButton">
+            <h4>Soap making</h4>
+        </button>
+        <button type="button" class="btn btn-lg btn-success categoryButton">
+            <h4>Spoon carving</h4>
+        </button>
+        <button type="button" class="btn btn-lg btn-success categoryButton">
+            <h4>Knitting</h4>
+        </button>
+        <button type="button" class="btn btn-lg btn-success categoryButton">
+            <h4>Yoga</h4>
+        </button>
+        <button type="button" class="btn btn-lg btn-success categoryButton">
+            <h4>Painting</h4>
+        </button>
+    </div>
+
+    <hr>
+
+    <div class="AppDescriptionContainer">
+        <p>Host a class of your own!</p>
+    </div>
+
+    <div class="teachButtonContainer">
+        <a href="/teach"><button type="button" class="btn btn-lg btn-success teachButton">
+                <h4>Teach</h4>
+            </button></a>
+    </div>
+</div>
+<!-- Style for image -->
+<style>
+    @media only screen and (max-width: 576px) {
+        .mobileOnly {
+            display: block
         }
 
-        @media only screen and (min-width: 576px) {
-            .mobileOnly {
-                display: none
-            }
-
-            .desktopOnly {
-                display: block
-            }
+        .desktopOnly {
+            display: none
         }
-    </style>
-    <!-- Custom Script -->
-    <script src="/public/js/index.js" type="text/javascript"></script>
-    {{!-- I tried to connect to the js but it doesn't read it so I had to add it in here directly --}}
-    <script>
-        // run everything when the window loads
-        window.onload = function () {
-            console.log('index page has loaded')
-            // Get references to page elements
-            var $classCategoriesContainer = document.querySelector('.classCategoriesContainer')
-            var $dropDownContent = document.querySelector('.dropdown-content')
+    }
 
-            // our initial categories array
-            var categories = []
-
-            // our initial unique categories buttons and drop downs to add
-            var uniqueCategoriesButtonsToAdd = []
-            var uniqueDropDownsToAdd = []
-
-            // getting categories when the page loads
-            getCategories()
-
-            // this function clears existing dummy buttons
-            function clearDummyButtons() {
-                $classCategoriesContainer.innerHTML = ''
-                $dropDownContent.innerHTML = ''
-                console.log('all existing categories buttons have been erased')
-            }
-
-            // this function removes duplicate categoryButtons
-            function getUnique(array) {
-                var uniqueArray = []
-                for (i = 0; i < array.length; i++) {
-                    if (uniqueArray.indexOf(array[i]) === -1) {
-                        uniqueArray.push(array[i])
-                    }
-                }
-                return uniqueArray
-            }
-
-            // this function displays the category buttons
-            function displayButtons() {
-                console.log('displayButtons function was called')
-                clearDummyButtons()
-                var categoryButtonsToAdd = []
-                for (var i = 0; i < categories.length; i++) {
-                    categoryButtonsToAdd.push(createNewCategoryButton(categories[i]))
-                }
-                console.log('these are the categoryButtonsToAdd: ' + categoryButtonsToAdd)
-                // capture only unique buttons
-                uniqueCategoryButtonsToAdd = getUnique(categoryButtonsToAdd)
-                console.log('the new unique buttons are: ' + uniqueCategoryButtonsToAdd)
-                $classCategoriesContainer.insertAdjacentHTML('afterbegin', uniqueCategoryButtonsToAdd)
-            }
-
-            // this function displays the drop downss
-            function displayDropDowns() {
-                console.log('displayDropDownsfunction was called')
-                clearDummyButtons()
-                var DropDownsToAdd = []
-                for (var i = 0; i < categories.length; i++) {
-                    DropDownsToAdd.push(createNewDropDowns(categories[i]))
-                }
-                console.log('these are the DropDownsToAdd: ' + DropDownsToAdd)
-                // capture only unique buttons
-                uniqueDropDownsToAdd = getUnique(DropDownsToAdd)
-                console.log('the new unique dropdowns are: ' + uniqueDropDownsToAdd)
-                $dropDownContent.insertAdjacentHTML('afterbegin', uniqueDropDownsToAdd)
-            }
-
-            // this function grabs the categories from the database and updates the view
-            function getCategories() {
-                fetch('/allData')
-                    .then(results => results.json())
-                    .then(function (data) {
-                        categories = data
-                        console.log('got all data', categories)
-                        displayButtons(categories)
-                        displayDropDowns(categories)
-                    })
-            }
-
-            // this function constructs a new category button
-            function createNewCategoryButton(category) {
-                console.log('createNewCategoryButton function was called')
-                let newCategoryButton = `<a href="/learn/${category.category}"><button type="button" class="btn btn-lg btn-success categoryButton" data-id='${category.category}'><h4>${category.category}</h4></button></a>`
-                return newCategoryButton
-            }
-
-            // this function constructs a dropdown
-            function createNewDropDowns(category) {
-                console.log('createNewDropDowns was called')
-                let newDropDowns = `<a class="dropdown-item" href="/learn/${category.category}">${category.category}</a>`
-                return newDropDowns
-            }
-            // !!!!!this function removes the comma from the buttons array
+    @media only screen and (min-width: 576px) {
+        .mobileOnly {
+            display: none
         }
-    </script>
 
-</body>
+        .desktopOnly {
+            display: block
+        }
+    }
+</style>
+<!-- Custom Script -->
+{{!-- I tried to connect to the js but it doesn't read it so I had to add it in here directly --}}
+<script src="/public/js/index.js" type="text/javascript"></script>
+<script>
+    // run everything when the window loads
+    window.onload = function () {
+        console.log('index page has loaded')
+        // Get references to page elements
+        var $classCategoriesContainer = document.querySelector('.classCategoriesContainer')
+        var $dropDownContent = document.querySelector('.dropdown-content')
+
+        // our initial categories array
+        var categories = []
+
+        // our initial unique categories buttons and drop downs to add
+        var uniqueCategoriesButtonsToAdd = []
+        var uniqueDropDownsToAdd = []
+
+        // getting categories when the page loads
+        getCategories()
+
+        // this function clears existing dummy buttons
+        function clearDummyButtons() {
+            $classCategoriesContainer.innerHTML = ''
+            $dropDownContent.innerHTML = ''
+            console.log('all existing categories buttons have been erased')
+        }
+
+        // this function removes duplicate categoryButtons
+        function getUnique(array) {
+            var uniqueArray = []
+            for (i = 0; i < array.length; i++) {
+                if (uniqueArray.indexOf(array[i]) === -1) {
+                    uniqueArray.push(array[i])
+                }
+            }
+            return uniqueArray
+        }
+
+        // this function displays the category buttons
+        function displayButtons() {
+            console.log('displayButtons function was called')
+            clearDummyButtons()
+            var categoryButtonsToAdd = []
+            for (var i = 0; i < categories.length; i++) {
+                categoryButtonsToAdd.push(createNewCategoryButton(categories[i]))
+            }
+            console.log('these are the categoryButtonsToAdd: ' + categoryButtonsToAdd)
+            // capture only unique buttons
+            uniqueCategoryButtonsToAdd = getUnique(categoryButtonsToAdd)
+            console.log('the new unique buttons are: ' + uniqueCategoryButtonsToAdd)
+            $classCategoriesContainer.insertAdjacentHTML('afterbegin', uniqueCategoryButtonsToAdd.join(''))
+        }
+
+        // this function displays the drop downss
+        function displayDropDowns() {
+            console.log('displayDropDownsfunction was called')
+            var DropDownsToAdd = []
+            for (var i = 0; i < categories.length; i++) {
+                DropDownsToAdd.push(createNewDropDowns(categories[i]))
+            }
+            console.log('these are the DropDownsToAdd: ' + DropDownsToAdd)
+            // capture only unique buttons
+            uniqueDropDownsToAdd = getUnique(DropDownsToAdd)
+            console.log('the new unique dropdowns are: ' + uniqueDropDownsToAdd)
+            $dropDownContent.insertAdjacentHTML('afterbegin', uniqueDropDownsToAdd.join(''))
+        }
+
+        // this function grabs the categories from the database and updates the view
+        function getCategories() {
+            fetch('/allData')
+                .then(results => results.json())
+                .then(function (data) {
+                    categories = data
+                    console.log('got all data', categories)
+                    displayButtons(categories)
+                    displayDropDowns(categories)
+                })
+        }
+
+        // this function constructs a new category button
+        function createNewCategoryButton(category) {
+            console.log('createNewCategoryButton function was called')
+            let newCategoryButton = `<a href="/learn/${category.category}"><button type="button" class="btn btn-lg btn-success categoryButton" data-id='${category.category}'><h4>${category.category}</h4></button></a>`
+            return newCategoryButton
+        }
+
+        // this function constructs a dropdown
+        function createNewDropDowns(category) {
+            console.log('createNewDropDowns was called')
+            let newDropDowns = `<a class="dropdown-item" href="/learn/${category.category}">${category.category}</a>`
+            return newDropDowns
+        }
+    }
+</script>
