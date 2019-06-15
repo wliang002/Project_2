@@ -100,7 +100,13 @@
   </div>
 
   <div class="" align="center">
-    {{> classbtns}}
+    {{#each categories}}
+    <a href="/learn/{{url}}">
+    <button type="button" class="btn btn-lg btn-success categoryButton">
+        <h4>{{text}}</h4>
+    </button>
+    </a> 
+    {{/each}}
   </div>
 
   <hr>
@@ -216,7 +222,7 @@
       uniqueCategoryButtonsToAdd = getUnique(categoryButtonsToAdd)
       console.log('the new unique buttons are: ' + uniqueCategoryButtonsToAdd)
 
-      // $classCategoriesContainer.insertAdjacentHTML('afterbegin', uniqueCategoryButtonsToAdd)
+      //$classCategoriesContainer.insertAdjacentHTML('afterbegin', uniqueCategoryButtonsToAdd)
 
     }
 
