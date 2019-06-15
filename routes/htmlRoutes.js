@@ -1,18 +1,16 @@
 // Dependecies
-// const tableData = require('../models/classes')
 
+/* eslint-disable no-unused-vars */
 const path = require('path')
 const Classes = require('../models/classes')
 /**
  * htmlRoutes: This routes file renders views e.g. handlebars pages
  * It differs from the apiRoutes.js file in that it responds to the client/view requests with a
- * handlebars page where the apiRoutes.js responds with data onlu
+ * handlebars page where the apiRoutes.js responds with data only
  *
  */
 
-
-// code to use handlebars
-// Dependencies
+// Code to use handlebars
 
 module.exports = function (app) {
 // Load index page
@@ -39,8 +37,8 @@ module.exports = function (app) {
         categories.push(category)
       }
     })
-    
-   cb(categories)
+
+    cb(categories)
   }
 
   app.get('/learn/:category', function (req, res) {
@@ -50,13 +48,13 @@ module.exports = function (app) {
       category: chosenCategory
     })
       .then(function (dbClasses) {
-            filterCategories(dbClasses, function (results) {
-              console.log('category chosen   '+results)
-              res.render('learn', {
-                categories: results,
-                classes: dbClasses
-              })
-            })
+        filterCategories(dbClasses, function (results) {
+          console.log('category chosen   ' + results)
+          res.render('learn', {
+            categories: results,
+            classes: dbClasses
+          })
+        })
       })
   })
 
@@ -76,3 +74,5 @@ module.exports = function (app) {
     res.render('404')
   })
 }
+
+/* eslint-enable no-unused-vars */
