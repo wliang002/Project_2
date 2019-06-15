@@ -51,7 +51,6 @@ window.onload = function () {
   // this function displays the drop downss
   function displayDropDowns () {
     console.log('displayDropDownsfunction was called')
-    clearDummyButtons()
     var DropDownsToAdd = []
     for (var i = 0; i < categories.length; i++) {
       DropDownsToAdd.push(createNewDropDowns(categories[i]))
@@ -88,7 +87,13 @@ window.onload = function () {
     let newDropDowns = `<a class="dropdown-item" href="/learn/${category.category}">${category.category}</a>`
     return newDropDowns
   }
+
   // !!!!!this function removes the comma from the buttons array
+  function removeCommas () {
+    $classCategoriesContainer.innerHTML.replace(',', '')
+  }
+
+  removeCommas()
 }
 
 // var exampleText = document.querySelector('#example-text')
