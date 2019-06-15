@@ -82,11 +82,9 @@
         <div class="form-group">
           <label for="categorySelect">Select a category for your class type</label>
           <select class="form-control" id="categorySelect">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
+            {{#each categories}}
+                 <option>{{text}}</option>   
+            {{/each}}
           </select>
         </div>
 
@@ -163,7 +161,7 @@
                     <!-- !!!!!!!!!! delete this mock result -->
                     {{#each classes}}
                        <li class='ClassWithThisTeacher'>
-                        <h1>Class: Spoon carving</h1>
+                        <h1>Class: {{eventname}}</h1>
                         <p><strong>category:</strong>{{category}}</p>
                         <p><strong>Taught by:</strong> {{teacher}}</p>
                         <p><strong>Location:</strong> {{eventlocation}}</p>
