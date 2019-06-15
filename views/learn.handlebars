@@ -1,7 +1,8 @@
 <!-- header with a dropdown menu and login -->
 <header class="siteheader">
   <div class="siteheaderContainer">
-    <a href="/" id="site-logo">Learn Local</a>
+
+    <div id="site-logo"><a href="/" id="site-logo">Learn Local</a></div>
     <div class="dropdown">
       <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
         aria-haspopup="true" aria-expanded="false">
@@ -214,7 +215,9 @@
       // capture only unique buttons
       uniqueCategoryButtonsToAdd = getUnique(categoryButtonsToAdd)
       console.log('the new unique buttons are: ' + uniqueCategoryButtonsToAdd)
+
       // $classCategoriesContainer.insertAdjacentHTML('afterbegin', uniqueCategoryButtonsToAdd)
+
     }
 
     // this function displays the drop downss
@@ -228,7 +231,7 @@
       // capture only unique buttons
       uniqueDropDownsToAdd = getUnique(DropDownsToAdd)
       console.log('the new unique dropdowns are: ' + uniqueDropDownsToAdd)
-      $dropDownContent.insertAdjacentHTML('afterbegin', uniqueDropDownsToAdd)
+      $dropDownContent.insertAdjacentHTML('afterbegin', uniqueDropDownsToAdd.join(''))
     }
 
     // this function grabs the categories from the database and updates the view
@@ -257,7 +260,5 @@
       return newDropDowns
     }
 
-    // !!!!!this function removes the comma from the buttons array
-   
   }
 </script>
