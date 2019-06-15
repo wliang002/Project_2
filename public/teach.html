@@ -21,6 +21,66 @@
 </head>
 
 <body>
+<!-- header with a dropdown menu and login -->
+<header class="siteheader">
+    <div class="site-logo">
+        <a href="./index.html" class="site-logo">LEANLOCAL</a>
+        <div class="dropdown">
+            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Browse
+            </a>
+
+            <div class="dropdown-content">
+                <a class="dropdown-item" href="#">Creative</a>
+                <a class="dropdown-item" href="#">Business</a>
+                <a class="dropdown-item" href="#">Lifestyle</a>
+                <a class="dropdown-item" href="#">Other</a>
+            </div>
+        </div>
+
+        <!-- Login  -->
+        <button class="sign" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+
+        <div id="id01" class="modal">
+
+            <form class="modal-content animate" action="/action_page.php">
+                <div class="imgcontainer">
+                    <span onclick="document.getElementById('id01').style.display='none'" class="close"
+                        title="Close Modal">&times;</span>
+                    <img src="../images/login.png" alt="Avatar" class="avatar">
+                </div>
+
+                <div class="login-container">
+                    <label for="uname"><b>Username</b></label>
+                    <input type="text" placeholder="Enter Username" name="uname" required>
+
+                    <label for="psw"><b>Password</b></label>
+                    <input type="password" placeholder="Enter Password" name="psw" required>
+
+                    <button class="login-button" type="submit">Login</button>
+                    <label>
+                        <input type="checkbox" checked="checked" name="remember"> Remember me
+                    </label>
+                </div>
+
+                <div class="login-container" style="background-color:#f1f1f1">
+                    <button type="button" onclick="document.getElementById('id01').style.display='none'"
+                        class="cancelbtn">Cancel</button>
+                    <span class="psw">Forgot <a href="#">password?</a></span>
+                </div>
+            </form>
+        </div>
+
+
+    </div>
+
+
+
+</header>
+
+<!-- main section of the page -->
+
 
   <div class="container">
 
