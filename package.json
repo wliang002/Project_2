@@ -5,7 +5,7 @@
   "description": "Project 2 Starter",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "node server.js",
     "lint": "standard --global describe --global fetch --global alert --global beforeEach --verbose | snazzy",
     "fix": "standard --fix .",
     "pretest": "knex migrate:latest --env staging",
