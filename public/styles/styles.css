@@ -2,6 +2,26 @@ body {
   background-color: #007B89;
 }
 
+footer {
+  text-decoration: none;
+  color:#fff;
+  font-family: 'Lustria', serif;
+  font-size: 17px;
+ }
+  
+ footer .container {
+   padding:0px;
+   text-align: center;
+   margin-top: 60px;
+   padding-top: 10px;
+   width:100%;
+   /* border-top: 1px solid */
+ }
+
+ footer a {
+  color: #DA7A22;
+ }
+
 h1 {
   color: #E4B320;
   text-align: center;
