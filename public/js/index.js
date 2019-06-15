@@ -5,6 +5,8 @@ window.onload = function () {
   var $classCategoriesContainer = document.querySelector('.classCategoriesContainer')
   // our initial categories array
   var categories = []
+  // our initial uniqueCategoriesButtonsToAdd
+  var uniqueCategoriesButtonsToAdd = []
   // getting categories when the page loads
   getCategories()
   // this function clears existing dummy buttons
@@ -12,33 +14,48 @@ window.onload = function () {
     $classCategoriesContainer.innerHTML = ''
     console.log('all existing categories buttons have been erased')
   }
+  // this function removes duplicate categoryButtons
+  function getUnique (array) {
+    var uniqueArray = []
+    for (i = 0; i < array.length; i++) {
+      if (uniqueArray.indexOf(array[i]) === -1) {
+        uniqueArray.push(array[i])
+      }
+    }
+    return uniqueArray
+  }
   // this function displays the category buttons
   function displayButtons () {
     console.log('displayButtons function was called')
+    clearDummyButtons()
     var categoryButtonsToAdd = []
     for (var i = 0; i < categories.length; i++) {
       categoryButtonsToAdd.push(createNewCategoryButton(categories[i]))
     }
-    $classCategoriesContainer.insertAdjacentHTML('afterbegin', categoryButtonsToAdd)
+    console.log('these are the categoryButtonsToAdd: ' + categoryButtonsToAdd)
+    // capture only unique buttons
+    uniqueCategoryButtonsToAdd = getUnique(categoryButtonsToAdd)
+    console.log('the new unique buttons are: ' + uniqueCategoryButtonsToAdd)
+    $classCategoriesContainer.insertAdjacentHTML('afterbegin', uniqueCategoryButtonsToAdd)
   }
   // this function grabs the categories from the database and updates the view
   function getCategories () {
-    fetch('/api/events')
+    fetch('/allData')
       .then(results => results.json())
       .then(function (data) {
         categories = data
-        console.log('get all data', categories)
+        console.log('got all data', categories)
         displayButtons(categories)
-        clearDummyButtons()
       })
   }
 
-  // this function constructs a new category button but i think this constructs a new button FOR ALL classes, I may have to throw all categories pulled from database into an array then make them unique then for each unique category create a button
+  // this function constructs a new category button
   function createNewCategoryButton (category) {
     console.log('createNewCategoryButton function was called')
-    let newCategoryButton = `<a href="/learn/${category.text}"><button type="button" class="btn btn-lg btn-success categoryButton" data-id='${category.text}'><h4>${category.text}/h4></button></a>`
+    let newCategoryButton = `<a href="/learn/${category.category}"><button type="button" class="btn btn-lg btn-success categoryButton" data-id='${category.category}'><h4>${category.category}</h4></button></a>`
     return newCategoryButton
   }
+  // !!!!!this function removes the comma from the buttons array
 }
 
 // var exampleText = document.querySelector('#example-text')

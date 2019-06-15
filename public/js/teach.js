@@ -20,7 +20,7 @@ window.onload = function () {
           // DELETE BTN
           event.stopPropagation()
           let id = event.target.dataset.id
-  
+
           fetch('/teach/' + id, {
             method: 'DELETE'
           })

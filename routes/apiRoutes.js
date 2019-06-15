@@ -48,6 +48,7 @@ module.exports = function (app) {
       console.log(`Class.find(): ${results.length ? results : 'No records found'}`)
       res.json(results)
     })
+
   })
 
   // // !!!! this one needs to be reworked based on how teach page wants to delete classes
@@ -58,4 +59,5 @@ module.exports = function (app) {
         res.json(dbClass)
       })
   })
+
 }
