@@ -3,6 +3,7 @@
   <div class="siteheaderContainer">
 
     <div id="site-logo"><a href="/" id="site-logo">Learn Local</a></div>
+
     <div class="dropdown">
       <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
         aria-haspopup="true" aria-expanded="false">
@@ -17,6 +18,7 @@
         {{/each}}
       </div>
     </div>
+
 
     <!-- Login  -->
     <button class="sign" onclick="document.getElementById('id01').style.display='block'"
@@ -81,7 +83,10 @@
       </div>
       <div class="form-group">
         <label for="eventname">Event Name</label>
+
+
         <textarea class="form-control" id="eventName" rows="1"></textarea>
+
       </div>
       <div class="form-group">
         <label for="categorySelect">Select a category for your class type</label>
@@ -109,6 +114,7 @@
         <label for="location">Description:</label>
         <textarea class="form-control" id="description" rows="8"></textarea>
       </div>
+
 
       <button type="submit" class="btn btn-success addClassbtn">Add Class</button>
 
@@ -154,6 +160,15 @@
 
 
 </div>
+
+
+<footer class="footer">
+  <div class="container">
+    <a href="https://github.com/wliang002/Project_2" target="_blank">GitHub Repo</a></p>
+  </div>
+</footer>
+
+
 <script>
   // Getting a reference to the input field where user adds a new class
   var $newTname = document.querySelector('#teachersName')
