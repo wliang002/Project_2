@@ -1,32 +1,77 @@
-<div id="home">
-  <div class="container">
-    <div class="row">
-      <div class="col-8 offset-2">
-        <h1>{{msg}}</h1>
-        <h2>This is our Home Page!</h2>
-        <form class="clearfix mb-4" action="POST">
-          <div class="form-group">
-            <label for="example-text">Example Text</label>
-            <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Enter Example Text">
-          </div>
-          <div class="form-group">
-            <label for="example-description">Example Description</label>
-            <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Enter Example Description"></textarea>
-          </div>
-          <button id="submit" class="btn btn-primary float-right">Submit</button>
-        </form>
-        <h3>Examples:</h3>
-        <ul id="example-list" class="list-group">
-          {{#each examples}}
-          <li data-id="{{this.id}}" class="list-group-item">
-            <a href="example/{{this.id}}">{{this.text}}</a>
-            <button class="btn btn-danger float-right delete">ｘ</button>
-          </li>
-          {{/each}}
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
+<div class="container">
 
-<script src="/js/index.js"></script>
+        <h1>Learn Local INDEX HANDLEBAR</h1>
+        <hr>
+        <h2>Building community by learning from one another.</h2>
+
+        <div class="AppDescriptionContainer">
+            <p><strong>Learn Local</strong> is a community building skillshare platform that connects passionate
+               local artisans with one another.
+        </div>
+
+        <div class="mainImageContainer desktopOnly">
+            <img src="images/backgrounddesktop1200x800.jpg" class="img-fluid" alt=''>
+        </div>
+        <div class="mainImageContainer mobileOnly">
+            <img src="images/backgroundmobilehearts.jpg" class="img-fluid" alt=''>
+        </div>
+
+        <hr>
+
+        <div class="AppDescriptionContainer">
+            <p>Search for a class happening in your neighborhood.
+            </p>
+        </div>
+
+        <div class="classCategoriesContainer">
+            <button type="button" class="btn btn-lg btn-success categoryButton">
+                <h4>Soap making</h4>
+            </button>
+            <button type="button" class="btn btn-lg btn-success categoryButton">
+                <h4>Spoon carving</h4>
+            </button>
+            <button type="button" class="btn btn-lg btn-success categoryButton">
+                <h4>Knitting</h4>
+            </button>
+            <button type="button" class="btn btn-lg btn-success categoryButton">
+                <h4>Yoga</h4>
+            </button>
+            <button type="button" class="btn btn-lg btn-success categoryButton">
+                <h4>Painting</h4>
+            </button>
+        </div>
+
+        <hr>
+
+        <div class="AppDescriptionContainer">
+            <p>Host a class of your own!</p>
+        </div>
+
+        <div class="teachButtonContainer">
+            <a href="/teach"><button type="button" class="btn btn-lg btn-success teachButton">
+                <h4>Teach</h4>
+            </button></a>
+        </div>
+
+    </div>
+  <!-- Style for image -->
+  <style>
+@media only screen and (max-width: 576px) {
+    .mobileOnly {
+        display: block
+    }
+    .desktopOnly {
+        display: none
+    }
+}
+@media only screen and (min-width: 576px) {
+    .mobileOnly {
+        display: none
+    }
+    .desktopOnly {
+        display: block
+    }
+}
+  </style>
+  <!-- Custom Script -->
+  <script src="js/index.js" type="text/javascript"></script>

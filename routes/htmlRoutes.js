@@ -14,10 +14,6 @@ module.exports = function (app) {
     res.sendFile(path.join(__dirname, '../public/index.html'))
   })
 
-  app.get('/learn', function (req, res) {
-    res.sendFile(path.join(__dirname, '../public/learn.html'))
-  })
-
   app.get('/teach', function (req, res) {
     res.sendFile(path.join(__dirname, '../public/teach.html'))
   })
@@ -25,5 +21,39 @@ module.exports = function (app) {
   // If no matching route is found default to home
   app.get('*', function (req, res) {
     res.sendFile(path.join(__dirname, '../public/index.html'))
+  })
+}
+
+// code to use handlebars
+// Dependencies
+const Class = require('../models/classes')
+
+module.exports = function (app) {
+
+  // Load index page
+  app.get('/', function (req, res) {
+    Class.findAll({})
+      .then(function (dbExamples) {
+        res.render('index', {
+          msg: 'Welcome!',
+          examples: dbExamples
+        })
+      })
+  })
+
+  // this only returns classes from the chosen category -- for "learn" pages
+  app.get('/learn/:category', function (req, res) {
+    var chosenCategory = req.params.category
+    // this logs in the terminal
+    console.log(`category selected: ${chosenCategory}`)
+    Class.find({
+      category: chosenCategory
+    })
+      .then(function (classesInCategory) {
+        console.log(`classes in the chosen category: ${classesInCategory}`)
+        res.render('learn', {
+          classes: classesInCategory
+        })
+      })
   })
 }
