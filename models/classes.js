@@ -9,7 +9,7 @@ const knex = require('../config/connection.js')
  *
  * @class Class
  */
-class Class {
+class Classes {
   constructor (table = 'classes') {
     this.table = table
     this.defaultOrder = { column: 'category', order: 'asc' }
@@ -90,7 +90,7 @@ class Class {
   }
 };
 
-module.exports = new Class()
+module.exports = new Classes()
 
 // // ******************** below is Diana's code ********************
 // // Dependencies

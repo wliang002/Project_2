@@ -9,10 +9,9 @@
       </a>
 
       <div class="dropdown-content">
-        <a class="dropdown-item" href="#">Creative</a>
-        <a class="dropdown-item" href="#">Business</a>
-        <a class="dropdown-item" href="#">Lifestyle</a>
-        <a class="dropdown-item" href="#">Other</a>
+        {{#each categories}}
+         <a href="/learn/{{url}}"><h5 style="color: #007B89">{{text}}</h5></a>    
+        {{/each}}
       </div>
     </div>
 
@@ -72,18 +71,20 @@
       <div class="card">
         <div class="card-body">
           <ul id="selectedCategoryResults" class="list-group">
+          {{#each classes}}
             <li class='ClassInSelectedCategory'>
-              <h1>Class: {{this.eventname}}</h1>
-              <p><strong>Taught by:</strong> {{this.teacher}}</p>
-              <p><strong>Location:</strong> {{this.eventlocation}}</p>
-              <p><strong>Date:</strong> {{this.eventdate}}</p>
-              <p><strong>Time:</strong> {{this.eventtime}}</p>
-              <p><strong>Description:</strong> {{this.eventdescription}}
+              <h1>Class: {{eventname}}</h1>
+              <p><strong>Taught by:</strong> {{teacher}}</p>
+              <p><strong>Location:</strong> {{eventlocation}}</p>
+              <p><strong>Date:</strong> {{eventdate}}</p>
+              <p><strong>Time:</strong> {{eventtime}}</p>
+              <p><strong>Description:</strong> {{eventdescription}}
               </p>
               <div class="text-center"><button type="button" class="btn btn-lg btn-success signUpButton">
                   <h4>Sign up now!</h4>
                 </button></div>
             </li>
+            {{/each}}
           </ul>
         </div>
       </div>
@@ -97,22 +98,8 @@
     </p>
   </div>
 
-  <div class="classCategoriesContainer">
-    <button type="button" class="btn btn-lg btn-success categoryButton">
-      <h4>Soap making</h4>
-    </button>
-    <button type="button" class="btn btn-lg btn-success categoryButton">
-      <h4>Spoon carving</h4>
-    </button>
-    <button type="button" class="btn btn-lg btn-success categoryButton">
-      <h4>Knitting</h4>
-    </button>
-    <button type="button" class="btn btn-lg btn-success categoryButton">
-      <h4>Yoga</h4>
-    </button>
-    <button type="button" class="btn btn-lg btn-success categoryButton">
-      <h4>Painting</h4>
-    </button>
+  <div class="" align="center">
+    {{> classbtns}}
   </div>
 
   <hr>
@@ -184,7 +171,7 @@
   window.onload = function () {
     console.log('index page has loaded')
     // Get references to page elements
-    var $classCategoriesContainer = document.querySelector('.classCategoriesContainer')
+    // var $classCategoriesContainer = document.querySelector('.classCategoriesContainer')
     var $dropDownContent = document.querySelector('.dropdown-content')
 
     // our initial categories array
@@ -199,7 +186,7 @@
 
     // this function clears existing dummy buttons
     function clearDummyButtons() {
-      $classCategoriesContainer.innerHTML = ''
+      // $classCategoriesContainer.innerHTML = ''
       $dropDownContent.innerHTML = ''
       console.log('all existing categories buttons have been erased')
     }
@@ -227,7 +214,7 @@
       // capture only unique buttons
       uniqueCategoryButtonsToAdd = getUnique(categoryButtonsToAdd)
       console.log('the new unique buttons are: ' + uniqueCategoryButtonsToAdd)
-      $classCategoriesContainer.insertAdjacentHTML('afterbegin', uniqueCategoryButtonsToAdd)
+      // $classCategoriesContainer.insertAdjacentHTML('afterbegin', uniqueCategoryButtonsToAdd)
     }
 
     // this function displays the drop downss
@@ -271,10 +258,6 @@
     }
 
     // !!!!!this function removes the comma from the buttons array
-    function removeCommas() {
-      $classCategoriesContainer.innerHTML.replace(',', '')
-    }
-
-    removeCommas()
+   
   }
 </script>
