@@ -33,7 +33,7 @@ module.exports = {
   production: {
     client: 'mysql',
     connection: {
-      host: process.env.DATABASE_URL,
+      host: 'u0zbt18wwjva9e0v.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
       port: 3306,
       database: 'dslyqknka5ia5x6q',
       user: 'gwwa9ttmcp8hjp30',
