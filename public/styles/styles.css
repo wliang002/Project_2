@@ -86,6 +86,11 @@ p {
   -o-background-size: cover
 } */
 
+.fourOhFour a {
+  color: rgb(73, 105, 109);
+  font-family: 'Lustria', serif;
+  font-size: 17px;
+}
 .AppDescriptionContainer p {
   text-align: center;
 }
