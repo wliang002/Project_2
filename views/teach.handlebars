@@ -82,6 +82,7 @@
         <div class="form-group">
           <label for="categorySelect">Select a category for your class type</label>
           <select class="form-control" id="categorySelect">
+            <option>Select a category</option>
             {{#each categories}}
                  <option>{{text}}</option>   
             {{/each}}
@@ -106,21 +107,6 @@
         </div>
 
         <button type="submit" class="btn btn-success">Add Class</button>
-        <!-- <div class="form-group">
-          <label for="exampleFormControlInput1">Email address</label>
-          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-        </div> -->
-
-        <!-- <div class="form-group">
-          <label for="exampleFormControlSelect2">Example multiple select</label>
-          <select multiple class="form-control" id="exampleFormControlSelect2">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </select>
-        </div> -->
 
       </form>
     </div>
@@ -142,50 +128,9 @@
               </div>
             </div>
         </div>
-
-
-
           </div>
 
-
-
-
-
-
-
-          <div class="row">
-            <div class="col-12">
-              <div class="card">
-                <div class="card-body">
-                  <ul id="allClassesTaughtByTeacher" class="list-group">
-                    <!-- !!!!!!!!!! delete this mock result -->
-                    {{#each classes}}
-                       <li class='ClassWithThisTeacher'>
-                        <h1>Class: {{eventname}}</h1>
-                        <p><strong>category:</strong>{{category}}</p>
-                        <p><strong>Taught by:</strong> {{teacher}}</p>
-                        <p><strong>Location:</strong> {{eventlocation}}</p>
-                        <p><strong>Date:</strong>{{eventdate}}</p>
-                        <p><strong>Time:</strong> {{eventtime}}</p>
-                        <p><strong>Description:</strong> {{eventdescription}}</p>
-                        <div class="text-center">
-                          <button type="button" class="btn btn-lg btn-success updateButton classBtn" data-classid="{{id}}">
-                            <h4>Update</h4>
-                          </button>
-                          <button type="button" class="btn btn-lg btn-danger deleteButton classBtn" data-classid="{{id}}">
-                            <h4>Delete</h4>
-                          </button>
-                          </h4>
-                          </button>
-                        </div>
-                        <hr>
-                        <h3>RSVPs:</h3>
-                        <ol>
-                          <li>Person 1</li>
-                          <li>Person 2</li>
-                        </ol>
-                       </li>
-                    {{/each}}
+         
                     
                   </ul>
                 </div>
@@ -200,43 +145,163 @@
             {{> classbtns}}
           </div>
 
-          <div class="classCategoriesContainer">
-         
-          </div>
         </div>
 
-        <!-- 
-        <footer class="footer">
-            <div class="container">
-                <p><a href="/api/friends">API Friends List</a> | <a href="https://github.com/hetty-chin/FriendFinder"
-                        target="_blank">GitHub Repo</a></p>
-            </div>
-        </footer> -->
+    
 
       </div>
     <script>
-      $(".classBtn").click(function(){
-        var selectedBtn = $(this).text().trim().toLowerCase();
-        var id = $(this).data("classid")
-    
-        switch(selectedBtn) {
-          case update:
-           updateClass(id)
-          break;
-          case delete:
-            deleteClass(id)
-          break;
-          default:
-            alert("try again")
+// Getting a reference to the input field where user adds a new class
+  var $newTname = document.querySelector('#teachersName')
+  var $newEvent = document.querySelector('#eventName')
+  var $newCategory = document.querySelector('#categorySelect')
+  var $newLocation = document.querySelector('#location')
+  var $newDate = document.querySelector('#date')
+  var $newTime = document.querySelector('#time')
+  var $newDescript = document.querySelector('#description')
+
+  // Our new classes will go inside the $classContainer
+  var $classContainer = document.querySelector('#class-container')
+
+
+  // Adding event listeners for deleting, editing, and adding classes
+  $classContainer.addEventListener('click', function (event) {
+    if (event.target.nodeName === 'BUTTON') {
+      if (event.target.matches('button.deleteButton')) {
+        // DELETE BTN
+        event.stopPropagation()
+        let id = event.target.dataset.id
+
+        fetch('/teach/' + id, {
+          method: 'DELETE'
+        })
+          .then(function (data) {
+            getClasses()
+          })
+      } else if (event.target.matches('button.complete')) {
+      
+        event.stopPropagation()
+        let tParent = event.target.parentNode
+        let tName = tParent.querySelector(`teacherName${tParent.dataset.classes}`)
+        let eName = tParent.querySelector(`eventName${tParent.dataset.classes}`)
+        let category = tParent.querySelector(`eventCat${tParent.dataset.classes}`)
+        let eLocation = tParent.querySelector(`eventLoc${tParent.dataset.classes}`)
+        let eDate = tParent.querySelector(`eventDate${tParent.dataset.classes}`)
+        let eTime = tParent.querySelector(`eventTime${tParent.dataset.classes}`)
+        let eDescript = tParent.querySelector(`eventDescript${tParent.dataset.classes}`)
+
+        let classes = {
+          id: tParent.dataset.classes,
+          teacher: tParent.dataset.tName,
+          eventname: tParent.dataset.eName,
+          category: tParent.dataset.category,
+          eventlocation: tParent.dataset.eLocation,
+          eventdate: tParent.dataset.eDate,
+          eventtime: tParent.dataset.eTime,
+          eventdescription: tParent.dataset.eDescript
+
         }
+      }
+    }
+  })
+
+  document.querySelector('#addClass').addEventListener('submit', insertClass)
+
+  // Our initial classes array
+  var classes = []
+
+  // Getting classes from database when page loads
+  getClasses()
+
+  // This function resets the classes displayed with new classes from the database
+  function initializeRows () {
+    $classContainer.innerHTML = ''
+
+    var rowsToAdd = []
+
+    for (var i = 0; i < classes.length; i++) {
+      rowsToAdd.push(createNewRow(classes[i]))
+    }
+    $classContainer.insertAdjacentHTML('afterbegin', rowsToAdd)
+  }
+
+  // This function grabs classes from the database and updates the view
+  function getClasses () {
+    fetch('/allData')
+      .then(results => results.json())
+      .then(function (data) {
+        classes = data
+        console.log('get all data', classes)
+        initializeRows(classes)
+      })
+  }
+
+
+
+
+  // This function constructs a class row
+  function createNewRow (lecture) {
+    let newInputRow = `<ul id="allClassesTaughtByTeacher" class="list-group">
+      <li class='ClassWithThisTeacher' data-completed='${lecture.completed}' data-class='${lecture.id}>
+        <p class='teacher' id='teacherName${lecture.id}'></p>
+        <h1 id='eventName${lecture.id}'> Class: ${lecture.eventname}</h1>
+        <p class='teacher' id='teacherName${lecture.id}'><strong>Taught by:</strong> ${lecture.teacher}</p>
+        <p><strong>Location:</strong>${lecture.eventlocation}</p>
+        <p><strong>Date:</strong> ${lecture.eventdate}</p>
+        <p><strong>Time:</strong> ${lecture.eventtime}</p>
+        <p><strong>Description:</strong> ${lecture.eventdescription} </p>
+      <div class="text-center">
+        <button type="button" class="btn btn-lg btn-success updateButton">
+          <h4>Update</h4>
+      </button>
+        <button type="button" data-id='${lecture.id}' class="deleteButton btn btn-danger btn-lg">
+          <h4>Delete</h4>
+        </button>
+        </h4>
+        </button>
+      </div>
+    </li>
+    </ul>`
+
+    return newInputRow
+  }
+
+  // This function inserts a new todo into our database and then updates the view
+  function insertClass (event) {
+    event.preventDefault()
+
+
+
+    var lecture = {
+      teacher: $newTname.value,
+      eventname: $newEvent.value,
+      category: $newCategory.value,
+      eventlocation: $newLocation.value,
+      eventdate: $newDate.value,
+      eventtime: $newTime.value,
+      eventdescription: $newDescript.value
+    }
+
+    // Send the POST request.
+    fetch('/teach', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(lecture)
+    })
+    // On success, run the following code
+      .then(function (data) {
+        // Log the data we found
+        console.log(data)
+        getClasses()
       })
 
-      function  updateClass(id) {
-       
-      }
-
-       function  deleteClass(id) {
-         // call api to delete class by id then location.refresh()
-      }
+    $newTname.value = ''
+      $newEvent.value = ''
+      $newCategory.value = ''
+      $newLocation.value = ''
+      $newDate.value = ''
+      $newTime.value = ''
+      $newDescript.value = ''
+  }
     </script>
       {{!-- <script src="js/teach.js" type="text/javascript"></script> --}}
