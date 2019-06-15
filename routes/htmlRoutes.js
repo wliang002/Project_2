@@ -9,20 +9,7 @@ const Classes = require('../models/classes')
  * handlebars page where the apiRoutes.js responds with data onlu
  *
  */
-// module.exports = function (app) {
-//   app.get('/home', function (req, res) {
-//     res.sendFile(path.join(__dirname, '../public/index.html'))
-//   })
 
-//   app.get('/teach', function (req, res) {
-//     res.sendFile(path.join(__dirname, '../public/teach.html'))
-//   })
-
-//   // If no matching route is found default to home
-//   app.get('*', function (req, res) {
-//     res.sendFile(path.join(__dirname, '../public/index.html'))
-//   })
-// }
 
 // code to use handlebars
 // Dependencies
@@ -82,5 +69,10 @@ module.exports = function (app) {
             classes: dbClasses })
         })
       })
+  })
+
+  // Render 404 page for any unmatched routes
+  app.get('*', function (req, res) {
+    res.render('404')
   })
 }
