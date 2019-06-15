@@ -48,14 +48,16 @@ module.exports = function (app) {
       console.log(`Class.find(): ${results.length ? results : 'No records found'}`)
       res.json(results)
     })
+
   })
 
   // // !!!! this one needs to be reworked based on how teach page wants to delete classes
-  // // Delete a class by id
-  // app.delete('/teach/:id', function (req, res) {
-  //   Class.destroy(req.params)
-  //     .then(function (dbClass) {
-  //       res.json(dbClass)
-  //     })
-  // })
+  // Delete a class by id
+  app.delete('/teach/:id', function (req, res) {
+    Class.destroy(req.params)
+      .then(function (dbClass) {
+        res.json(dbClass)
+      })
+  })
+
 }
