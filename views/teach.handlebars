@@ -1,55 +1,59 @@
 <!-- header with a dropdown menu and login -->
 <header class="siteheader">
-    <div class="site-logo">
-        <a href="/" id="site-logo">Learn Local</a>
-        <div class="dropdown">
-            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Browse
-            </a>
+  <div class="siteheaderContainer">
 
-            <div class="dropdown-content">
-                {{#each categories}}
-                 <a href="/learn/{{url}}"><h5 style="color: #007B89">{{text}}</h5></a>      
-                {{/each}}
-            </div>
-        </div>
+    <div id="site-logo"><a href="/" id="site-logo">Learn Local</a></div>
+    <div class="dropdown">
+      <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        Browse
+      </a>
 
-        <!-- Login  -->
-        <button class="sign" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
-
-        <div id="id01" class="modal">
-
-            <form class="modal-content animate" action="/action_page.php">
-                <div class="imgcontainer">
-                    <span onclick="document.getElementById('id01').style.display='none'" class="close"
-                        title="Close Modal">&times;</span>
-                    <img src="../images/login.png" alt="Avatar" class="avatar">
-                </div>
-
-                <div class="login-container">
-                    <label for="uname"><b>Username</b></label>
-                    <input type="text" placeholder="Enter Username" name="uname" required>
-
-                    <label for="psw"><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="psw" required>
-
-                    <button class="login-button" type="submit">Login</button>
-                    <label>
-                        <input type="checkbox" checked="checked" name="remember"> Remember me
-                    </label>
-                </div>
-
-                <div class="login-container" style="background-color:#f1f1f1">
-                    <button type="button" onclick="document.getElementById('id01').style.display='none'"
-                        class="cancelbtn">Cancel</button>
-                    <span class="psw">Forgot <a href="#">password?</a></span>
-                </div>
-            </form>
-        </div>
-
-
+      <div class="dropdown-content">
+        {{#each categories}}
+        <a href="/learn/{{url}}">
+          <h5 style="color: #007B89">{{text}}</h5>
+        </a>
+        {{/each}}
+      </div>
     </div>
+
+    <!-- Login  -->
+    <button class="sign" onclick="document.getElementById('id01').style.display='block'"
+      style="width:auto;">Login</button>
+
+    <div id="id01" class="modal">
+
+      <form class="modal-content animate" action="/action_page.php">
+        <div class="imgcontainer">
+          <span onclick="document.getElementById('id01').style.display='none'" class="close"
+            title="Close Modal">&times;</span>
+          <img src="../images/login.png" alt="Avatar" class="avatar">
+        </div>
+
+        <div class="login-container">
+          <label for="uname"><b>Username</b></label>
+          <input type="text" placeholder="Enter Username" name="uname" required>
+
+          <label for="psw"><b>Password</b></label>
+          <input type="password" placeholder="Enter Password" name="psw" required>
+
+          <button class="login-button" type="submit">Login</button>
+          <label>
+            <input type="checkbox" checked="checked" name="remember"> Remember me
+          </label>
+        </div>
+
+        <div class="login-container" style="background-color:#f1f1f1">
+          <button type="button" onclick="document.getElementById('id01').style.display='none'"
+            class="cancelbtn">Cancel</button>
+          <span class="psw">Forgot <a href="#">password?</a></span>
+        </div>
+      </form>
+    </div>
+
+
+  </div>
 
 
 
@@ -58,100 +62,100 @@
 <!-- main section of the page -->
 
 
-  <div class="container">
+<div class="container">
 
-    <h1>Teach!</h1>
-    <hr>
-    <h2> Host a class for your neighbors.</h2>
-    <div class="AppDescriptionContainer">
-      <p>Insert instructions for how to post a class...
-      </p>
-    </div>
-    <div class="teachForm">
-      <!-- https://getbootstrap.com/docs/4.0/components/forms/ -->
-      <!-- https://getbootstrap.com/docs/4.3/components/forms/ -->
-      <form id="addClass">
-        <div class="form-group">
-          <label for="teachersName">Teachers's name</label>
-          <textarea class="form-control" id="teachersName" rows="1"></textarea>
-        </div>
-        <div class="form-group">
-          <label for="eventname">Event Name</label>
-          <textarea class="form-control" id="eventName" rows="4"></textarea>
-        </div>
-        <div class="form-group">
-          <label for="categorySelect">Select a category for your class type</label>
-          <select class="form-control" id="categorySelect">
-            <option>Select a category</option>
-            {{#each categories}}
-                 <option>{{text}}</option>   
-            {{/each}}
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label for="location">Location address:</label>
-          <textarea class="form-control" id="location" rows="4"></textarea>
-        </div>
-        <div class="form-group">
-          <label for="location">Date:</label>
-          <textarea class="form-control" id="date" rows="1"></textarea>
-        </div>
-        <div class="form-group">
-          <label for="location">Time:</label>
-          <textarea class="form-control" id="time" rows="1"></textarea>
-        </div>
-        <div class="form-group">
-          <label for="location">Description:</label>
-          <textarea class="form-control" id="description" rows="8"></textarea>
-        </div>
-
-        <button type="submit" class="btn btn-success">Add Class</button>
-
-      </form>
-    </div>
-    <hr>
-
-    <h2>The classes you are currently hosting:</h2>
-    <div class="classesListedUnderTeacher">
-      <p>See who&rsquo;s signed up for your classes. Make updates to or delete your classes.</p>
-
-      
-        <div class="row">
-          <div class="col-12">
-            <div class="card">
-              <div class="card-body">
-                <ul id="allClassesTaughtByTeacher" class="list-group" >
-                    <div class="classContainer" id="class-container">
-
-                </ul>
-              </div>
-            </div>
-        </div>
-          </div>
-
-         
-                    
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <hr>
-
-          <div class="" align="center">
-             
-            {{> classbtns}}
-          </div>
-
-        </div>
-
-    
-
+  <h1>Teach!</h1>
+  <hr>
+  <h2> Host a class for your neighbors.</h2>
+  <div class="AppDescriptionContainer">
+    <p>Insert instructions for how to post a class...
+    </p>
+  </div>
+  <div class="teachForm">
+    <!-- https://getbootstrap.com/docs/4.0/components/forms/ -->
+    <!-- https://getbootstrap.com/docs/4.3/components/forms/ -->
+    <form id="addClass">
+      <div class="form-group">
+        <label for="teachersName">Teachers's name</label>
+        <textarea class="form-control" id="teachersName" rows="1"></textarea>
       </div>
-    <script>
-// Getting a reference to the input field where user adds a new class
+      <div class="form-group">
+        <label for="eventname">Event Name</label>
+        <textarea class="form-control" id="eventName" rows="4"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="categorySelect">Select a category for your class type</label>
+        <select class="form-control" id="categorySelect">
+          <option>Select a category</option>
+          {{#each categories}}
+          <option>{{text}}</option>
+          {{/each}}
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="location">Location address:</label>
+        <textarea class="form-control" id="location" rows="4"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="location">Date:</label>
+        <textarea class="form-control" id="date" rows="1"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="location">Time:</label>
+        <textarea class="form-control" id="time" rows="1"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="location">Description:</label>
+        <textarea class="form-control" id="description" rows="8"></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-success addClassbtn">Add Class</button>
+
+    </form>
+  </div>
+  <hr>
+
+  <h2>The classes you are currently hosting:</h2>
+  <div class="classesListedUnderTeacher">
+    <p>See who&rsquo;s signed up for your classes. Make updates to or delete your classes.</p>
+
+
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <ul id="allClassesTaughtByTeacher" class="list-group">
+              <div class="classContainer" id="class-container">
+
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    </ul>
+  </div>
+</div>
+</div>
+</div>
+
+<hr>
+
+<div class="" align="center">
+
+  {{> classbtns}}
+</div>
+
+</div>
+
+
+
+</div>
+<script>
+  // Getting a reference to the input field where user adds a new class
   var $newTname = document.querySelector('#teachersName')
   var $newEvent = document.querySelector('#eventName')
   var $newCategory = document.querySelector('#categorySelect')
@@ -179,7 +183,7 @@
             getClasses()
           })
       } else if (event.target.matches('button.complete')) {
-      
+
         event.stopPropagation()
         let tParent = event.target.parentNode
         let tName = tParent.querySelector(`teacherName${tParent.dataset.classes}`)
@@ -214,7 +218,7 @@
   getClasses()
 
   // This function resets the classes displayed with new classes from the database
-  function initializeRows () {
+  function initializeRows() {
     $classContainer.innerHTML = ''
 
     var rowsToAdd = []
@@ -222,11 +226,11 @@
     for (var i = 0; i < classes.length; i++) {
       rowsToAdd.push(createNewRow(classes[i]))
     }
-    $classContainer.insertAdjacentHTML('afterbegin', rowsToAdd)
+    $classContainer.insertAdjacentHTML('afterbegin', rowsToAdd.join(''))
   }
 
   // This function grabs classes from the database and updates the view
-  function getClasses () {
+  function getClasses() {
     fetch('/allData')
       .then(results => results.json())
       .then(function (data) {
@@ -240,13 +244,13 @@
 
 
   // This function constructs a class row
-  function createNewRow (lecture) {
+  function createNewRow(lecture) {
     let newInputRow = `<ul id="allClassesTaughtByTeacher" class="list-group">
       <li class='ClassWithThisTeacher' data-completed='${lecture.completed}' data-class='${lecture.id}>
         <p class='teacher' id='teacherName${lecture.id}'></p>
         <h1 id='eventName${lecture.id}'> Class: ${lecture.eventname}</h1>
         <p class='teacher' id='teacherName${lecture.id}'><strong>Taught by:</strong> ${lecture.teacher}</p>
-        <p><strong>Location:</strong>${lecture.eventlocation}</p>
+        <p><strong>Location:</strong> ${lecture.eventlocation}</p>
         <p><strong>Date:</strong> ${lecture.eventdate}</p>
         <p><strong>Time:</strong> ${lecture.eventtime}</p>
         <p><strong>Description:</strong> ${lecture.eventdescription} </p>
@@ -267,7 +271,7 @@
   }
 
   // This function inserts a new todo into our database and then updates the view
-  function insertClass (event) {
+  function insertClass(event) {
     event.preventDefault()
 
 
@@ -288,7 +292,7 @@
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(lecture)
     })
-    // On success, run the following code
+      // On success, run the following code
       .then(function (data) {
         // Log the data we found
         console.log(data)
@@ -296,11 +300,11 @@
       })
 
     $newTname.value = ''
-      $newEvent.value = ''
-      $newCategory.value = ''
-      $newLocation.value = ''
-      $newDate.value = ''
-      $newTime.value = ''
-      $newDescript.value = ''
+    $newEvent.value = ''
+    $newCategory.value = ''
+    $newLocation.value = ''
+    $newDate.value = ''
+    $newTime.value = ''
+    $newDescript.value = ''
   }
 </script>
