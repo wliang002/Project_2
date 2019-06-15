@@ -39,11 +39,11 @@ module.exports = function (app) {
   })
 
   // this only returns classes from a chosen teacher -- for "teach" pages
-  app.get('/teach/:teacher', function (req, res) {
+  app.get('/viewSelectTeacher/:teacher', function (req, res) {
     var chosenTeacher = req.params.teacher
     console.log(`category selected: ${chosenTeacher}`)
     Class.find({
-      category: chosenTeacher }
+      teacher: chosenTeacher }
     ).then(results => {
       console.log(`Class.find(): ${results.length ? results : 'No records found'}`)
       res.json(results)
