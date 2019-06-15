@@ -2,7 +2,8 @@
     <!-- header with a dropdown menu and login -->
     <header class="siteheader">
         <div class="siteheaderContainer">
-            <a href="/" id="site-logo">Learn Local</a>
+
+            <div id="site-logo"><a href="/" id="site-logo">Learn Local</a></div>
             <div class="dropdown">
                 <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -11,8 +12,10 @@
 
                 <div class="dropdown-content">
                     {{#each categories}}
-                     <a href="/learn/{{url}}"><h5 style="color: #007B89">{{text}}</h5></a>      
-                     {{/each}}
+                    <a href="/learn/{{url}}">
+                        <h5 style="color: #007B89">{{text}}</h5>
+                    </a>
+                    {{/each}}
                 </div>
             </div>
 
@@ -79,7 +82,7 @@
 
         {{!-- <div class="classCategoriesContainer"> --}}
         <div class="" align="center">
-          {{> classbtns}}
+            {{> classbtns}}
         </div>
 
         <hr>
