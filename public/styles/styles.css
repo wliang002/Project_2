@@ -192,13 +192,15 @@ form label {
 
 .siteheaderContainer {
   font-family: 'Lustria', serif;
-  font-size: 17px;
 }
 
 #site-logo {
   color: #E4B320;
+  font-size: 20px;
   font-family: 'Fredericka the Great', cursive;
   text-shadow: 1px 1px 0 rgba(0,0,0,0.4), 0 0 15px rgba(255,255,255,0.4);
+  float: left;
+  margin-top: 3px;
 }
 
 .dropdown {
@@ -211,6 +213,7 @@ form label {
   font-size: 17px;
   color:#DA7A22;
   text-shadow: 1px 1px 0 rgba(0,0,0,0.4), 0 0 15px rgba(255,255,255,0.4);
+  margin-top: 5px;
 }
 
 .dropdown-content {
@@ -376,7 +379,6 @@ span.psw {
      width: 100%;
   }
 }
-
 
 /* main section */
 .container {

@@ -1,7 +1,8 @@
 <!-- header with a dropdown menu and login -->
 <header class="siteheader">
   <div class="siteheaderContainer">
-    <a href="/" id="site-logo">Learn Local</a>
+
+    <div id="site-logo"><a href="/" id="site-logo">Learn Local</a></div>
     <div class="dropdown">
       <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
         aria-haspopup="true" aria-expanded="false">
@@ -269,12 +270,5 @@
       let newDropDowns = `<a class="dropdown-item" href="/learn/${category.category}">${category.category}</a>`
       return newDropDowns
     }
-
-    // !!!!!this function removes the comma from the buttons array
-    function removeCommas() {
-      $classCategoriesContainer.innerHTML.replace(',', '')
-    }
-
-    removeCommas()
   }
 </script>
