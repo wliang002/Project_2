@@ -35,9 +35,9 @@ module.exports = {
     connection: {
       host: process.env.DATABASE_URL,
       port: 3306,
-      database: 'eventsdb',
-      user: 'nodeUser',
-      password: ''
+      database: 'dslyqknka5ia5x6q',
+      user: 'gwwa9ttmcp8hjp30',
+      password: 't3tbpiw2ll4baopb'
     },
     pool: {
       min: 2,
