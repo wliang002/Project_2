@@ -1,5 +1,6 @@
 // Dependecies
 
+/* eslint-disable no-unused-vars */
 const path = require('path')
 const Classes = require('../models/classes')
 /**
@@ -73,3 +74,5 @@ module.exports = function (app) {
     res.render('404')
   })
 }
+
+/* eslint-enable no-unused-vars */

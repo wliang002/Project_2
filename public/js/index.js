@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
 // run everything when the window loads
 window.onload = function () {
   // console.log('index page has loaded')
@@ -25,7 +27,7 @@ window.onload = function () {
   // this function removes duplicate categoryButtons
   function getUnique (array) {
     var uniqueArray = []
-    for (i = 0; i < array.length; i++) {
+    for (var i = 0; i < array.length; i++) {
       if (uniqueArray.indexOf(array[i]) === -1) {
         uniqueArray.push(array[i])
       }
@@ -88,3 +90,5 @@ window.onload = function () {
     return newDropDowns
   }
 }
+/* eslint-enable no-undef */
+/* eslint-enable no-unused-vars */
