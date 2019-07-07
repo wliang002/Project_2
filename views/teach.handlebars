@@ -287,18 +287,22 @@
     function validateForm() {
       var isValid = true;
       //jQuery method
-      {{!-- $(".form-control").each(function () {
-        if ($(this).val() === "") {
+      {
+        {
+          !--$(".form-control").each(function () {
+            if ($(this).val() === "") {
+              isValid = false;
+            }
+          }); --}
+      }
+      //vanilla javscript method
+      var formFields = document.getElementsByClassName('form-control')
+      for (var i = 0; i < formFields.length, i++) {
+        if (formFields[i].value === '' {
           isValid = false;
         }
-      }); --}}
-      //vanilla javscript method
-      var formFields = document.getElementsByClassName('form-control').value;
-      if (formFields === "") {
-        isValid = false;
+        return isValid;
       }
-      return isValid;
-      console.log(isValid)
     }
 
     //if all fields are filled
