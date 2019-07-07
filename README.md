@@ -32,5 +32,8 @@ Users can browse available classes/workshops by category and sign up for them. T
 - Map flyover that shows where the classes are.
 - Allow upload of images.
 
+## Link to Heroku App
+https://learnlocalproj2.herokuapp.com/
+
 ## License
 - GNU Public License
