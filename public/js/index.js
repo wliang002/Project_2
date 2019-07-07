@@ -2,8 +2,6 @@
 /* eslint-disable no-unused-vars */
 // run everything when the window loads
 window.onload = function () {
-  // console.log('index page has loaded')
-  // Get references to page elements
   var $classCategoriesContainer = document.querySelector('.classCategoriesContainer')
   var $dropDownContent = document.querySelector('.dropdown-content')
 
@@ -17,8 +15,8 @@ window.onload = function () {
   // getting categories when the page loads
   getCategories()
 
-  // this function clears existing dummy buttons
-  function clearDummyButtons () {
+  // this function clears existing buttons
+  function clearExistingButtons () {
     $classCategoriesContainer.innerHTML = ''
     $dropDownContent.innerHTML = ''
     // console.log('all existing categories buttons have been erased')
@@ -38,7 +36,7 @@ window.onload = function () {
   // this function displays the category buttons
   function displayButtons () {
     console.log('displayButtons function was called')
-    clearDummyButtons()
+    clearExistingButtons()
     var categoryButtonsToAdd = []
     for (var i = 0; i < categories.length; i++) {
       categoryButtonsToAdd.push(createNewCategoryButton(categories[i]))

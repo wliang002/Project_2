@@ -1,5 +1,3 @@
-// Dependecies
-
 /* eslint-disable no-unused-vars */
 const path = require('path')
 const Classes = require('../models/classes')
@@ -13,7 +11,7 @@ const Classes = require('../models/classes')
 // Code to use handlebars
 
 module.exports = function (app) {
-// Load index page
+  // Load index page
   app.get('/', function (req, res) {
     Classes.findAll(req.query)
       .then(function (dbClasses) {
@@ -41,6 +39,25 @@ module.exports = function (app) {
     cb(categories)
   }
 
+  function filterTeachers (dbClasses, cb) {
+    var teachers = []
+    var list = []
+    // console.log("all data", dbClasses)
+    dbClasses.forEach(function (item) {
+      if (!list.includes(item.teacher)) {
+        list.push(item.teacher)
+        var teacher = {
+          text: item.teacher,
+          url: item.category.replace(/\s/g, '-')
+        }
+        teachers.push(teacher)
+      }
+    })
+
+    cb(teachers)
+  }
+  
+  // show only select category classes
   app.get('/learn/:category', function (req, res) {
     var chosenCategory = req.params.category
     chosenCategory = chosenCategory.replace(/-/g, ' ')
@@ -49,7 +66,7 @@ module.exports = function (app) {
     })
       .then(function (dbClasses) {
         filterCategories(dbClasses, function (results) {
-          console.log('category chosen   ' + results)
+          console.log('category chosen ' + results)
           res.render('learn', {
             categories: results,
             classes: dbClasses
@@ -58,13 +75,33 @@ module.exports = function (app) {
       })
   })
 
-  // Load teach page
+  // Load teach page with all classes
   app.get('/teach', function (req, res) {
     Classes.findAll(req.query)
       .then(function (dbClasses) {
         filterCategories(dbClasses, function (results) {
-          res.render('teach', { categories: results,
-            classes: dbClasses })
+          res.render('teach', {
+            categories: results,
+            classes: dbClasses
+          })
+        })
+      })
+  })
+
+  // show only select teacher classes
+  app.get('/teach/:teacher', function (req, res) {
+    var chosenTeacher = req.params.teacher
+    chosenTeacher = chosenTeacher.replace(/-/g, ' ')
+    Classes.find({
+      teacher: chosenTeacher
+    })
+      .then(function (dbClasses) {
+        filterTeachers(dbClasses, function (results) {
+          console.log('teacher chosen ' + results)
+          res.render('teach', {
+            teachers: results,
+            classes: dbClasses
+          })
         })
       })
   })

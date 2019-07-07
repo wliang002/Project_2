@@ -1,8 +1,8 @@
 // *********************************************************************************
 // CONNECTION.JS - THIS FILE INITIATES THE CONNECTION TO MYSQL
 // *********************************************************************************
-// Dependencies
 
+// Dependencies
 const ENV = process.env.NODE_ENV || 'development'
 /* eslint-disable  no-unused-vars */
 const mysql = require('mysql')

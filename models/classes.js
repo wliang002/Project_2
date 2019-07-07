@@ -1,5 +1,4 @@
 // Dependencies
-// =============================================================
 const knex = require('../config/connection.js')
 
 /**
@@ -58,7 +57,7 @@ class Classes {
   }
 
   /**
-   * update a specific todo
+   * update a specific class
    *
    * @param {Object} where The where clause in the form of {column: value}
    * @param {Object} values The values to update in the form of {column: value}
