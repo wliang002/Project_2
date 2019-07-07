@@ -1,8 +1,8 @@
-
 exports.up = function (knex, Promise) {
   return knex.schema
     .createTable('classes', function (table) {
-      table.increments('id') // Adds an auto incrementing column and uses it as the primary key
+      // Adds an auto incrementing column and uses it as the primary key
+      table.increments('id')
       table.string('teacher', 255).notNullable()
       table.string('eventname', 255).notNullable()
       table.string('category', 255).notNullable()

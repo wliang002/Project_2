@@ -50,7 +50,6 @@ module.exports = function (app) {
     })
   })
 
-  // // !!!! this one needs to be reworked based on how teach page wants to delete classes
   // Delete a class by id
   app.delete('/teach/:id', function (req, res) {
     Class.destroy(req.params)

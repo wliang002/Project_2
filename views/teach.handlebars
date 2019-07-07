@@ -65,7 +65,7 @@
   <hr>
   <h2> Host a class for your neighbors.</h2>
   <div class="AppDescriptionContainer">
-    <p>Insert instructions for how to post a class...
+    <p>Fill out the form with all the details about your class then hit &ldquo;Add Class&rdquo; to publish.
     </p>
   </div>
   <div class="teachForm">
@@ -73,25 +73,23 @@
     <!-- https://getbootstrap.com/docs/4.3/components/forms/ -->
     <form id="addClass">
       <div class="form-group">
-        <label for="teachersName">Teacher&rsquo;s Name</label>
+        <label for="teachersName">Teacher&rsquo;s Name:</label>
         <textarea class="form-control" id="teachersName" rows="1"></textarea>
       </div>
       <div class="form-group">
-        <label for="eventname">Event Name</label>
-
+        <label for="eventname">Event Name:</label>
         <textarea class="form-control" id="eventName" rows="1"></textarea>
 
       </div>
       <div class="form-group">
-        <label for="categorySelect">Select a category for your class type</label>
+        <label for="categorySelect">Select a category for your class type:</label>
         <select class="form-control" id="categorySelect">
-          <option>Select a category</option>
+          <option>Select a category:</option>
           {{#each categories}}
           <option>{{text}}</option>
           {{/each}}
         </select>
       </div>
-
       <div class="form-group">
         <label for="location">Location address:</label>
         <textarea class="form-control" id="location" rows="4"></textarea>
@@ -108,9 +106,7 @@
         <label for="location">Description:</label>
         <textarea class="form-control" id="description" rows="8"></textarea>
       </div>
-
       <button type="submit" class="btn btn-success addClassbtn">Add Class</button>
-
     </form>
   </div>
   <hr>
@@ -123,42 +119,156 @@
       <div class="col-12">
         <div class="card">
           <div class="card-body">
-            <ul id="allClassesTaughtByTeacher" class="list-group">
-              <div class="classContainer" id="class-container">
+            <div class="classContainer" id="class-container">
 
-            </ul>
+
+              {{!-- adding chosen code --}}
+              <ul id="allClassesTaughtByTeacher" class="list-group">
+                {{#each classes}}
+                <li class='ClassWithThisTeacher' data-completed='{{completed}}' data-class='{{id}}'>
+                  <p class='teacher' id='teacherName{{id}}'></p>
+                  <h1 id='eventName{{id}}'> Class: {{eventname}}</h1>
+                  <p class='teacher' id='teacherName{{id}}'><strong>Taught by:</strong> {{teacher}}</p>
+                  <p><strong>Location:</strong> {{eventlocation}}</p>
+                  <p><strong>Date:</strong> {{eventdate}}</p>
+                  <p><strong>Time:</strong> {{eventtime}}</p>
+                  <p><strong>Description:</strong> {{eventdescription}} </p>
+                  <div class="text-center">
+                    <button type="button" class="btn btn-lg btn-success updateButton">
+                      <h4>Update</h4>
+                    </button>
+                    <button type="button" data-id='{{id}}' class="deleteButton btn btn-danger btn-lg">
+                      <h4>Delete</h4>
+                    </button>
+                    </h4>
+                    </button>
+                  </div>
+                </li>
+                {{/each}}
+              </ul>
+
+
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    </ul>
   </div>
-</div>
-</div>
 </div>
 
 <hr>
-
-<div class="" align="center">
-
-  {{> classbtns}}
+<div class="AppDescriptionContainer">
+  <p>Search for a different type of class.
+  </p>
 </div>
-
-</div>
-
-</div>
+{{!-- container to house category buttons --}}
+<div class="classCategoriesContainer" align="center"></div>
 
 <footer class="footer">
 
   <div class="container">
-    <img src="images/githublogo.png" style="width:30px">
+    <img src="/images/githublogo.png" style="width:30px">
     <a href="https://github.com/wliang002/Project_2" target="_blank">GitHub Repo</a>
   </div>
 </footer>
-
+<!-- Custom Script -->
+{{!-- I tried to connect to the js but it doesn't read it so I had to add it in here directly --}}
+<script src="/public/js/index.js" type="text/javascript"></script>
 <script>
-  // Getting a reference to the input field where user adds a new class
+  // run everything when the window loads
+  window.onload = function () {
+    console.log('index page has loaded')
+    // Get references to page elements
+    var $classCategoriesContainer = document.querySelector('.classCategoriesContainer')
+    var $dropDownContent = document.querySelector('.dropdown-content')
+
+    // our initial categories array
+    var categories = []
+
+    // our initial unique categories buttons and drop downs to add
+    var uniqueCategoriesButtonsToAdd = []
+    var uniqueDropDownsToAdd = []
+
+    // getting categories when the page loads
+    getCategories()
+
+    // this function clears existing buttons
+    function clearExistingButtons() {
+      $classCategoriesContainer.innerHTML = ''
+      $dropDownContent.innerHTML = ''
+      console.log('all existing categories buttons have been erased')
+    }
+
+    // this function removes duplicate categoryButtons
+    function getUnique(array) {
+      var uniqueArray = []
+      for (i = 0; i < array.length; i++) {
+        if (uniqueArray.indexOf(array[i]) === -1) {
+          uniqueArray.push(array[i])
+        }
+      }
+      return uniqueArray
+    }
+
+    // this function displays the category buttons
+    function displayButtons() {
+      console.log('displayButtons function was called')
+      clearExistingButtons()
+      var categoryButtonsToAdd = []
+      for (var i = 0; i < categories.length; i++) {
+        categoryButtonsToAdd.push(createNewCategoryButton(categories[i]))
+      }
+      console.log('these are the categoryButtonsToAdd: ' + categoryButtonsToAdd)
+      // capture only unique buttons
+      uniqueCategoryButtonsToAdd = getUnique(categoryButtonsToAdd)
+      console.log('the new unique buttons are: ' + uniqueCategoryButtonsToAdd)
+
+      $classCategoriesContainer.insertAdjacentHTML('afterbegin', uniqueCategoryButtonsToAdd.join(''))
+    }
+
+    // this function displays the dropdowns
+    function displayDropDowns() {
+      console.log('displayDropDownsfunction was called')
+      var DropDownsToAdd = []
+      for (var i = 0; i < categories.length; i++) {
+        DropDownsToAdd.push(createNewDropDowns(categories[i]))
+      }
+      console.log('these are the DropDownsToAdd: ' + DropDownsToAdd)
+      // capture only unique buttons
+      uniqueDropDownsToAdd = getUnique(DropDownsToAdd)
+      console.log('the new unique dropdowns are: ' + uniqueDropDownsToAdd)
+      $dropDownContent.insertAdjacentHTML('afterbegin', uniqueDropDownsToAdd.join(''))
+    }
+
+    // this function grabs the categories from the database and updates the view
+    function getCategories() {
+      fetch('/allData')
+        .then(results => results.json())
+        .then(function (data) {
+          categories = data
+          console.log('got all data', categories)
+          displayButtons(categories)
+          displayDropDowns(categories)
+        })
+    }
+
+    // this function constructs a new category button
+    function createNewCategoryButton(category) {
+      console.log('createNewCategoryButton function was called')
+      let newCategoryButton = `<a href="/learn/${category.category}"><button type="button" class="btn btn-lg btn-success categoryButton" data-id='${category.category}'><h4>${category.category}</h4></button></a>`
+      return newCategoryButton
+    }
+
+    // this function constructs a dropdown menu
+    function createNewDropDowns(category) {
+      console.log('createNewDropDowns was called')
+      let newDropDowns = `<a class="dropdown-item" href="/learn/${category.category}">${category.category}</a>`
+      return newDropDowns
+    }
+  }
+
+  // Getting references to the input field where user adds a new class
   var $newTname = document.querySelector('#teachersName')
   var $newEvent = document.querySelector('#eventName')
   var $newCategory = document.querySelector('#categorySelect')
@@ -167,9 +277,77 @@
   var $newTime = document.querySelector('#time')
   var $newDescript = document.querySelector('#description')
 
-  // Our new classes will go inside the $classContainer
+  //defining the container to house the classes
   var $classContainer = document.querySelector('#class-container')
 
+  // This function inserts a new class into our database
+  function insertClass(event) {
+    event.preventDefault();
+
+    //form validation
+    function validateForm() {
+      var isValid = true;
+      //jQuery method
+      {
+        {
+          !--$(".form-control").each(function () {
+            if ($(this).val() === "") {
+              isValid = false;
+            }
+          }); --}
+      }
+      //vanilla javscript method
+      var formFields = document.getElementsByClassName('form-control')
+      for (var i = 0; i < formFields.length, i++) {
+        if (formFields[i].value === '' {
+          isValid = false;
+        }
+        return isValid;
+      }
+    }
+
+    //if all fields are filled
+    if (validateForm()) {
+      //create an object for the class
+      var lecture = {
+        teacher: $newTname.value,
+        eventname: $newEvent.value,
+        category: $newCategory.value,
+        eventlocation: $newLocation.value,
+        eventdate: $newDate.value,
+        eventtime: $newTime.value,
+        eventdescription: $newDescript.value
+      }
+      // Send the POST request.
+      fetch('/teach', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(lecture)
+      })
+        // On success, run the following code
+        .then(function (data) {
+          // Log the data we found
+          console.log(data)
+        })
+      //reset all the fields
+      $newTname.value = ''
+      $newEvent.value = ''
+      $newCategory.value = ''
+      $newLocation.value = ''
+      $newDate.value = ''
+      $newTime.value = ''
+      $newDescript.value = ''
+    } else {
+      alert("Please fill out all the fields before submitting")
+    }
+
+  }
+
+  //event listener for submit button that calls the insertClass function
+  document.querySelector('#addClass').addEventListener('submit', insertClass)
+
+  //defining the container that houses the classes
+  var $classContainer = document.querySelector('#class-container')
 
   // Adding event listeners for deleting, editing, and adding classes
   $classContainer.addEventListener('click', function (event) {
@@ -178,7 +356,6 @@
         // DELETE BTN
         event.stopPropagation()
         let id = event.target.dataset.id
-
         fetch('/teach/' + id, {
           method: 'DELETE'
         })
@@ -212,102 +389,4 @@
     }
   })
 
-  document.querySelector('#addClass').addEventListener('submit', insertClass)
-
-  // Our initial classes array
-  var classes = []
-
-  // Getting classes from database when page loads
-  getClasses()
-
-  // This function resets the classes displayed with new classes from the database
-  function initializeRows() {
-    $classContainer.innerHTML = ''
-
-    var rowsToAdd = []
-
-    for (var i = 0; i < classes.length; i++) {
-      rowsToAdd.push(createNewRow(classes[i]))
-    }
-    $classContainer.insertAdjacentHTML('afterbegin', rowsToAdd.join(''))
-  }
-
-  // This function grabs classes from the database and updates the view
-  function getClasses() {
-    fetch('/allData')
-      .then(results => results.json())
-      .then(function (data) {
-        classes = data
-        console.log('get all data', classes)
-        initializeRows(classes)
-      })
-  }
-
-
-
-
-  // This function constructs a class row
-  function createNewRow(lecture) {
-    let newInputRow = `<ul id="allClassesTaughtByTeacher" class="list-group">
-      <li class='ClassWithThisTeacher' data-completed='${lecture.completed}' data-class='${lecture.id}>
-        <p class='teacher' id='teacherName${lecture.id}'></p>
-        <h1 id='eventName${lecture.id}'> Class: ${lecture.eventname}</h1>
-        <p class='teacher' id='teacherName${lecture.id}'><strong>Taught by:</strong> ${lecture.teacher}</p>
-        <p><strong>Location:</strong> ${lecture.eventlocation}</p>
-        <p><strong>Date:</strong> ${lecture.eventdate}</p>
-        <p><strong>Time:</strong> ${lecture.eventtime}</p>
-        <p><strong>Description:</strong> ${lecture.eventdescription} </p>
-      <div class="text-center">
-        <button type="button" class="btn btn-lg btn-success updateButton">
-          <h4>Update</h4>
-      </button>
-        <button type="button" data-id='${lecture.id}' class="deleteButton btn btn-danger btn-lg">
-          <h4>Delete</h4>
-        </button>
-        </h4>
-        </button>
-      </div>
-    </li>
-    </ul>`
-
-    return newInputRow
-  }
-
-  // This function inserts a new todo into our database and then updates the view
-  function insertClass(event) {
-    event.preventDefault()
-
-
-
-    var lecture = {
-      teacher: $newTname.value,
-      eventname: $newEvent.value,
-      category: $newCategory.value,
-      eventlocation: $newLocation.value,
-      eventdate: $newDate.value,
-      eventtime: $newTime.value,
-      eventdescription: $newDescript.value
-    }
-
-    // Send the POST request.
-    fetch('/teach', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(lecture)
-    })
-      // On success, run the following code
-      .then(function (data) {
-        // Log the data we found
-        console.log(data)
-        getClasses()
-      })
-
-    $newTname.value = ''
-    $newEvent.value = ''
-    $newCategory.value = ''
-    $newLocation.value = ''
-    $newDate.value = ''
-    $newTime.value = ''
-    $newDescript.value = ''
-  }
 </script>
