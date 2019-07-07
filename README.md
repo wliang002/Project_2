@@ -18,12 +18,12 @@ Users can browse available classes/workshops by category and sign up for them. T
 ## Features
 - home screen header nav dropdown and buttons pull all categories of classes from our SQL database
 - each category takes you to our "learn" interface and displays only classes of that particular category
-- raw data!!!
+- /viewSelectData/:category to see the raw data for categories
+- /viewSelectTeacher/:teacher to see the raw data for teachers
 - teach button takes you to our "teach" interface
 - from the "teach" interface, you can add a class and delete a class
-- if parts of the form are missing, an alert is called
+- if parts of the form are missing, an alert is prompted
 - teach/:teacher shows all the classes that a particular teacher is hosting
-
 
 ## Future Development
 - User log in to view/store classes taught per teacher.
