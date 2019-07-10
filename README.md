@@ -1,4 +1,4 @@
-# Learn Local
+# Learn Local (version 2)
 A community building skillshare platform that connects passionate artisans with one another.
 Users can browse available classes/workshops by category and sign up for them. Teachers can add classes that they want to teach.
 
